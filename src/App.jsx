@@ -1,20 +1,19 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Profile from "./components/Profile";
-import Process from "./components/Process";
-import Services from "./components/Services";
-import Projects from "./components/Projects";
-import WhyMe from "./components/WhyMe";
-import Testimonials from "./components/Testimonials";
-import FAQ from "./components/FAQ";
-import CTA from "./components/CTA";
-import Footer from "./components/Footer";
+import Navbar from "./Components/Navbar";
+import Hero from "../Components/Hero";
+import Profile from "../Components/Profile";
+import Process from "./Components/Process";
+import Services from "./Components/Services";
+import Projects from "./Components/Projects";
+import WhyMe from "./Components/WhyMe";
+import Testimonials from "./Components/Testimonials";
+import FAQ from "./Components/FAQ";
+import CTA from "./Components/CTA";
+import Footer from "./Components/Footer";
 
 export default function App() {
   return (
     <div>
       <Navbar />
-      <main>
         <Hero />
         <Profile />
         <Process />
@@ -24,9 +23,7 @@ export default function App() {
         <Testimonials />
         <FAQ />
         <CTA />
-      </main>
       <Footer />
-      <div />
     </div>
   );
 }
