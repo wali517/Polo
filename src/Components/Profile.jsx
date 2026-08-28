@@ -72,12 +72,9 @@ function StaggeredHeading({
 export default function Profile() {
   const [showBottomContent, setShowBottomContent] = useState(false);
   const bottomContentRef = useRef(null);
-
   useEffect(() => {
     const element = bottomContentRef.current;
-
     if (!element) return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -87,11 +84,9 @@ export default function Profile() {
       },
       {
         threshold: 0.15,
-      }
+      },
     );
-
     observer.observe(element);
-
     return () => observer.disconnect();
   }, []);
 
@@ -206,26 +201,27 @@ export default function Profile() {
                 </a>
               </div>
               <div className="mt-[22px] h-px w-full bg-white/10" />
-      <div
-  ref={bottomContentRef}
-  className={`mt-[22px] fade-up-button ${
-    showBottomContent ? "fade-up-button-show" : ""
-  }`}
->
-  <a
-    href="#contact"
-    className="flex h-[56px] w-[175px] items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[15px] font-medium leading-none text-white lg:h-[58px] lg:w-[182px] lg:text-[16px]"
-    style={{
-      background:
-        "linear-gradient(180deg, rgba(120,120,120) -382%, #080808 100%)",
-    }}
-  >
-    Connect with me
-  </a>
-</div>
+              <div
+                ref={bottomContentRef}
+                className={`mt-[22px] fade-up-button ${
+                  showBottomContent ? "fade-up-button-show" : ""
+                }`}
+              >
+                <a
+                  href="#contact"
+                  className="flex h-[56px] w-[175px] items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[15px] font-medium leading-none text-white lg:h-[58px] lg:w-[182px] lg:text-[16px]"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(120,120,120) -382%, #080808 100%)",
+                  }}
+                >
+                  Connect with me
+                </a>
+              </div>
             </div>
           </div>
-          <div className="h-full w-full rounded-[20px] bg-[#0F0F0F] px-[30px] pt-[30px] pb-[24px] lg:h-[738px]"
+          <div
+            className="h-full w-full rounded-[20px] bg-[#0F0F0F] px-[30px] pt-[30px] pb-[24px] lg:h-[738px]"
             style={{
               boxShadow:
                 "rgba(0,0,0,0.4) 16px 24px 20px 8px, rgba(184,180,180,0.08) 0px 2px 0px 0px inset",
