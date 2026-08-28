@@ -27,7 +27,7 @@
 }
 @theme {
   /* ---- Color system ---- */
-  --color-base: #0a0a0b;
+  --color-base: #0a0a0a;
   --color-primary: #FFFFFF99;
   --color-base-soft: #101012;
   --color-surface: #131315;
@@ -38,15 +38,14 @@
   --color-body: #a4a4ab;
   --color-dim: #6c6c74;
   --color-accent: #eeeeef;
-  --color-accent-foreground: #0a0a0b;
   --color-gold: #f2c14e;
   --color-live: #4ade80;
 
   /* ---- Font ---- */
 
-    --font-satoshi: "Satoshi", ui-sans-serif, system-ui, sans-serif;
-  --font-inter: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-jakarta: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-satoshi: "Satoshi", "Satoshi Placeholder", system-ui, sans-serif;
+  --font-inter: "Inter", system-ui, sans-serif;
+  --font-jakarta: "Plus Jakarta Sans", system-ui, sans-serif;
   
   /* ---- Custom Breakpoints ---- */
   --breakpoint-coxs: 375px;
@@ -508,10 +507,6 @@ body {
   }
 }
 
-/* =========================================
-   AVAILABLE STATUS PULSE
-========================================= */
-
 @keyframes profilePulse {
   0% {
     transform: scale(0.7);
@@ -531,4 +526,36 @@ body {
 
 .animate-profile-pulse {
   animation: profilePulse 1.8s ease-out infinite;
+}
+
+@keyframes arrowPulse {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(8px);
+    opacity: 0.45;
+  }
+}
+
+.fade-up-on-scroll {
+  animation: fadeUpButton 1s cubic-bezier(0.19, 1, 0.22, 1) both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 35%;
+}
+
+.fade-up-button {
+  opacity: 0;
+  transform: translateY(55px) scale(0.96);
+  transition:
+    opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1),
+    transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.fade-up-button-show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }

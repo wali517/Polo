@@ -156,13 +156,15 @@ function ProjectCard({ project, className = "", animationDelay = 0 }) {
       className={`relative w-full ${className}`}
     >
       <div
-        className={`relative h-full w-full overflow-hidden rounded-[20px] border border-white/[0.08] bg-[#111111] p-4 transition-all duration-[900ms] ease-[cubic-bezier(0.19,1,0.22,1)] ${
+        className={`relative h-full w-full overflow-hidden rounded-[20px] border border-white/[0.08] bg-[#111111] p-4 transition-all duration-[1100ms] ease-[cubic-bezier(0.19,1,0.22,1)] ${
           fadeVisible
             ? "translate-x-0 opacity-100"
             : "-translate-x-[100px] opacity-0"
         }`}
         style={{
           transitionDelay: fadeVisible ? `${animationDelay}s` : "0s",
+          boxShadow:
+            "rgba(0,0,0,0.4) 16px 24px 20px 8px, rgba(184,180,180,0.08) 0px 2px 0px 0px inset",
         }}
       >
         <img
@@ -221,7 +223,7 @@ function MobileProjectCard({ project, className = "" }) {
     <a
       ref={fadeRef}
       href={project.href}
-      className={`group relative block w-full transition-all duration-[900ms] ease-[cubic-bezier(0.19,1,0.22,1)] ${
+      className={`group relative block w-full transition-all duration-[1100ms] ease-[cubic-bezier(0.19,1,0.22,1)] ${
         fadeVisible
           ? "translate-x-0 opacity-100"
           : "-translate-x-[100px] opacity-0"
@@ -255,7 +257,7 @@ function StaggeredParagraph({
   text,
   className = "",
   startDelay = 0,
-  step = 0.025,
+  step = 0.06,
 }) {
   const words = text.split(" ");
   return (
@@ -265,7 +267,7 @@ function StaggeredParagraph({
           key={`${word}-${index}`}
           className="inline-block"
           style={{
-            animation: `heroWordReveal 0.6s cubic-bezier(0.19,1,0.22,1) ${startDelay + index * step}s both`,
+            animation: `heroWordReveal 1.1s cubic-bezier(0.19,1,0.22,1) ${startDelay + index * step}s both`,
           }}
         >
           {" "}
@@ -314,7 +316,7 @@ export default function Hero() {
               className="relative mt-5 flex w-full items-center gap-2 md:gap-4"
               style={{
                 animation:
-                  "heroWordReveal 0.7s cubic-bezier(0.19,1,0.22,1) 0.18s both",
+                  "heroWordReveal 1.3s cubic-bezier(0.19,1,0.22,1) 0.25s both",
               }}
             >
               <h1 className="w-max max-w-none whitespace-nowrap font-satoshi text-[72px] leading-[0.98]">
@@ -323,68 +325,69 @@ export default function Hero() {
                   className="text-[#FFFFFF99]"
                   style={{
                     animation:
-                      "heroWordReveal 0.9s cubic-bezier(0.19,1,0.22,1) 0.24s both",
+                      "heroWordReveal 1.4s cubic-bezier(0.19,1,0.22,1) 0.4s both",
                   }}
                 >
                   Beker
                 </span>
               </h1>
-              <a
-                href="./#profile"
-                onMouseEnter={() => setHeadingArrowHover(true)}
-                onMouseLeave={() => setHeadingArrowHover(false)}
-                className="relative flex h-[50px] w-[50px] shrink-0 items-center justify-center overflow-visible rounded-full border border-white/10 bg-[#0a0a0a] text-white sm:flex"
-                style={{ boxShadow: "0 2px 0 0 rgba(184,180,180,0.14) inset" }}
-              >
-                <span
-                  className="absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+              <div className="relative flex h-[50px] w-[50px] shrink-0">
+                <a
+                  href="./#profile"
+                  onMouseEnter={() => setHeadingArrowHover(true)}
+                  onMouseLeave={() => setHeadingArrowHover(false)}
+                  className="relative flex h-[50px] w-[50px] items-center justify-center overflow-hidden rounded-full border border-white/10 bg-[#0a0a0a] text-white"
                   style={{
-                    transform: headingArrowHover
-                      ? "translate3d(0,100%,0)"
-                      : "translate3d(0,0,0)",
-                    opacity: headingArrowHover ? 0 : 1,
+                    boxShadow: "0 2px 0 0 rgba(184,180,180,0.14) inset",
                   }}
                 >
-                  <ArrowUpRight
-                    className="h-6 w-6"
-                    style={{ transform: "rotate(10.5deg)" }}
-                  />
-                </span>
+                  <span
+                    className="absolute inset-0 flex items-center justify-center transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+                    style={{
+                      transform: headingArrowHover
+                        ? "translateY(-100%)"
+                        : "translateY(0)",
+                    }}
+                  >
+                    <ArrowUpRight
+                      className="h-6 w-6"
+                      style={{ transform: "rotate(10.5deg)" }}
+                    />
+                  </span>
+                  <span
+                    className="absolute inset-0 flex items-center justify-center transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+                    style={{
+                      transform: headingArrowHover
+                        ? "translateY(0)"
+                        : "translateY(100%)",
+                    }}
+                  >
+                    <ArrowUpRight
+                      className="h-6 w-6"
+                      style={{ transform: "rotate(10.5deg)" }}
+                    />
+                  </span>
+                </a>
                 <span
-                  className="absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                  style={{
-                    transform: headingArrowHover
-                      ? "translate3d(0,0,0)"
-                      : "translate3d(0,100%,0)",
-                    opacity: headingArrowHover ? 1 : 0,
-                  }}
-                >
-                  <ArrowUpRight
-                    className="h-6 w-6"
-                    style={{ transform: "rotate(10.5deg)" }}
-                  />
-                </span>
-                <span
-                  className="absolute left-[14px] bottom-[2px] whitespace-nowrap text-[12px] font-medium text-white transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                  className="pointer-events-none absolute left-[14px] bottom-[2px] whitespace-nowrap text-[12px] font-medium text-white"
                   style={{
                     opacity: headingArrowHover ? 1 : 0,
                     transform: headingArrowHover
                       ? "translate3d(0,0,0) rotate(-30.5deg)"
-                      : "translate3d(-6px,-4px,0) rotate(-20.5deg)",
+                      : "translate3d(6px,4px,0) rotate(-20.5deg)",
                     transition:
                       "opacity 400ms cubic-bezier(0.16,1,0.3,1) 100ms, transform 500ms cubic-bezier(0.16,1,0.3,1) 100ms",
                     transformOrigin: "right center",
                   }}
                 >
-                  {" "}
-                  ( about me ){" "}
+                  ( about me )
                 </span>
-              </a>
+              </div>
             </div>
             <StaggeredParagraph
               text="I'm a versatile designer specializing in graphic, web, and product design to help grow your business. Let's build something great!"
-              startDelay={0.3}
-              step={0.025}
+              startDelay={0.55}
+              step={0.06}
               className="mt-5 max-w-full font-jakarta text-[15px] text-[#FFFFFF99] md:text-[16px]"
             />
             <div className="mt-7 flex w-full flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:w-auto">
@@ -505,7 +508,7 @@ export default function Hero() {
             <MobileProjectCard project={PROJECTS[1]} className="h-[300px]" />
           </div>
         </div>
-        <div className="relative mt-30 flex items-center justify-center sm:mt-16">
+        <div className="relative mt-30 md:mb-20 flex items-center justify-center sm:mt-16">
           <a
             href="./#profile"
             className="flex h-10 w-10 items-center justify-center text-white"
@@ -514,7 +517,7 @@ export default function Hero() {
               className="h-8 w-8"
               strokeWidth={2}
               style={{
-                animation: "arrowPulse 1.8s ease-in-out infinite",
+                animation: "arrowPulse 3.5s ease-in-out infinite",
               }}
             />
           </a>
