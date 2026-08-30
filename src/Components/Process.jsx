@@ -1,19 +1,9 @@
-import React, { useEffect, useState } from "react";
-import {
-  MousePointer2,
-  ListChecks,
-  WandSparkles,
-  Rocket,
-  CircleDot,
-} from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { MousePointer2, ListChecks, WandSparkles, Rocket } from "lucide-react";
 import { process } from "../data/content";
+import "../index.css";
 
-const processIcons = [
-  MousePointer2,
-  ListChecks,
-  WandSparkles,
-  Rocket,
-];
+const processIcons = [MousePointer2, ListChecks, WandSparkles, Rocket];
 
 function BullseyeIcon() {
   return (
@@ -30,7 +20,6 @@ function StaggeredParagraph({
   step = 0.08,
 }) {
   const words = text.split(" ");
-
   return (
     <p className={className}>
       {words.map((word, index) => (
@@ -58,7 +47,6 @@ function StaggeredHeading({
   step = 0.22,
 }) {
   const words = children.trim().split(/\s+/);
-
   return (
     <span className={className}>
       {words.map((word, index) => (
@@ -76,7 +64,6 @@ function StaggeredHeading({
           >
             {word}
           </span>
-
           {index < words.length - 1 ? "\u00A0" : ""}
         </span>
       ))}
@@ -86,60 +73,82 @@ function StaggeredHeading({
 
 export default function Process() {
   const [scrollDirection, setScrollDirection] = useState("down");
-
+  const [visibleCards, setVisibleCards] = useState([]);
+  const cardRefs = useRef([]);
+  const [ctaVisible, setCtaVisible] = useState(false);
+  const ctaRef = useRef(null);
   useEffect(() => {
     let lastScrollY = window.scrollY;
-
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
       if (currentScrollY > lastScrollY) {
         setScrollDirection("down");
       } else if (currentScrollY < lastScrollY) {
         setScrollDirection("up");
       }
-
       lastScrollY = currentScrollY;
     };
-
     window.addEventListener("scroll", handleScroll, {
       passive: true,
     });
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  const [isTabletOrBelow, setIsTabletOrBelow] = useState(
-  window.innerWidth <= 1400
-);
+  useEffect(() => {
+    const observers = [];
+    cardRefs.current.forEach((card, index) => {
+      if (!card) return;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setVisibleCards((prev) => {
+              if (prev.includes(index)) return prev;
+              return [...prev, index];
+            });
+            observer.unobserve(card);
+          }
+        },
+        {
+          threshold: 0.15,
+        },
+      );
+      observer.observe(card);
+      observers.push(observer);
+    });
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, []);
+  useEffect(() => {
+    if (!ctaRef.current) return;
 
-useEffect(() => {
-  const handleResize = () => {
-    setIsTabletOrBelow(window.innerWidth <= 1400);
-  };
-
-  window.addEventListener("resize", handleResize);
-
-  return () => {
-    window.removeEventListener("resize", handleResize);
-  };
-}, []);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCtaVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.15,
+      },
+    );
+    observer.observe(ctaRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section
       id="process"
       className="w-full overflow-hidden rounded-[30px] border border-b-0 bg-[#080808] py-[90px] lg:py-[100px]"
     >
-      {/* ================= HEADER ================= */}
       <div className="mx-auto w-full max-w-full">
         <div className="flex w-full flex-col items-center text-center">
           <div className="inline-flex h-[38px] items-center gap-2 rounded-full border-t border-white/10 bg-[#0F0F0F] px-4 py-[6px] font-inter text-[15px] font-medium text-white">
             <BullseyeIcon />
-
             <span>How it works</span>
           </div>
-
           <h2 className="mt-[16px] font-satoshi text-[40px] leading-[1.5] tracking-[-0.04em] text-white lg:text-[54px]">
             <StaggeredHeading
               startDelay={0.15}
@@ -148,7 +157,6 @@ useEffect(() => {
             >
               Process
             </StaggeredHeading>{" "}
-
             <StaggeredHeading
               startDelay={0.65}
               step={0.25}
@@ -157,7 +165,6 @@ useEffect(() => {
               Is Everything
             </StaggeredHeading>
           </h2>
-
           <StaggeredParagraph
             text="Simple, streamlined process is what gets you results."
             startDelay={1.15}
@@ -166,162 +173,131 @@ useEffect(() => {
           />
         </div>
       </div>
-
-      {/* ================= PROCESS CARDS ================= */}
-<div className="relative mt-[44px] w-full overflow-hidden">
-  <div
-  className="
-    mx-auto
-    flex
-    w-max
-    gap-[24px]
-    transition-transform
-    duration-[2800ms]
-    ease-[cubic-bezier(0.16,1,0.3,1)]
-
-    max-[1400px]:grid
-    max-[1400px]:grid-cols-2
-    max-[1400px]:gap-[24px]
-    max-[1400px]:w-full
-    max-[1400px]:max-w-[1104px]
-    max-[1400px]:justify-items-center
-  "
-  style={{
-    position: "relative",
-    transform:
-      window.innerWidth <= 1400
-        ? "none"
-        : scrollDirection === "down"
-        ? "translateX(-50px)"
-        : "translateX(30px)",
-  }}
->
-    {process.map((item, i) => {
-      const Icon = processIcons[i] || MousePointer2;
-
-      return (
+      <div className="relative mt-[44px] w-full overflow-hidden">
         <div
-          key={item.step}
-          className="relative flex h-[361px] w-[399px] shrink-0 flex-col rounded-[16px] bg-[#0F0F0F] p-[30px] max-[1400px]:h-full
-  max-[1400px]:w-full"
+          className="mx-auto flex w-max gap-[24px] transition-transform duration-[2800ms] ease-[cubic-bezier(0.16,1,0.3,1)] max-[1400px]:grid max-[1400px]:grid-cols-2 max-[1400px]:gap-[24px] max-[1400px]:w-full max-[1400px]:max-w-[1104px] max-[1400px]:justify-items-center max-[991px]:grid max-[991px]:grid-cols-1 max-[991px]:grid-[24px] max-[991px]:w-full max-[991px]:max-w-[540px] max-[991px]:justify-items-center"
           style={{
-            boxShadow:
-              "rgba(0, 0, 0, 0.4) 16px 24px 20px 8px, rgba(184, 180, 180, 0.08) 0px 2px 0px 0px inset",
+            position: "relative",
+            transform:
+              window.innerWidth <= 1400
+                ? "none"
+                : scrollDirection === "down"
+                  ? "translateX(-70px)"
+                  : "translateX(40px)",
           }}
         >
-          {/* Top row */}
-          <div className="flex w-full items-start justify-between">
-            {/* Icon */}
-            <div className="flex h-[25px] w-[25px] items-center justify-center">
-              <Icon
-                className="h-[18px] w-[18px] text-white"
-                strokeWidth={1.5}
-              />
-            </div>
-
-            {/* Number */}
-            <div
-              className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#0A0A0A]"
-              style={{
-                boxShadow:
-                  "rgba(184, 180, 180, 0.14) 0px 2px 0px 0px inset",
-              }}
-            >
-              <span className="font-jakarta text-[16px] font-medium leading-none text-white">
-                {i + 1}
-              </span>
-            </div>
-          </div>
-
-          {/* Content */}
-          <div className="mt-[55px]">
-            <h3 className="font-jakarta text-[20px] font-bold leading-[1.3] text-white">
-              {item.title}
-            </h3>
-
-            <p className="mt-[10px] max-w-[320px] font-inter text-[15px] font-medium leading-[1.55] text-[#FFFFFF99]">
-              {item.body}
-            </p>
-          </div>
-
-          {/* Divider */}
-          <div className="mt-auto h-px w-full bg-white/10" />
-
-          {/* Step */}
-          <div className="mt-[20px]">
-            <div className="inline-flex h-[38px] items-center rounded-full border border-white/10 bg-[#111111] px-[14px]">
-              <span className="font-jakarta text-[13px] font-medium leading-none text-white/70">
-                Step {i + 1}
-              </span>
-            </div>
-          </div>
+          {process.map((item, i) => {
+            const Icon = processIcons[i] || MousePointer2;
+            const isVisible = visibleCards.includes(i);
+            return (
+              <div
+                key={item.step}
+                ref={(el) => {
+                  cardRefs.current[i] = el;
+                }}
+                className="relative flex shrink-0 flex-col rounded-[16px] bg-[#0F0F0F] p-[30px] max-[567px]:w-[calc(100vw-40px)] max-[567px]:max-w-full max-[1400px]:h-[340px] max-[1400px]:w-full max-[991px]:h-[330px] max-[991px]:w-[540px] max-[991px]:max-w-[540px]"
+                style={{
+                  transform:
+                    window.innerWidth <= 1400
+                      ? visibleCards.includes(i)
+                        ? "translateX(0)"
+                        : "translateX(-100px)"
+                      : "translateX(0)",
+                  opacity:
+                    window.innerWidth <= 1400
+                      ? visibleCards.includes(i)
+                        ? 1
+                        : 0
+                      : 1,
+                  transition:
+                    "transform 900ms cubic-bezier(0.16, 1, 0.3, 1), opacity 900ms ease",
+                  transitionDelay: `${i * 120}ms`,
+                  boxShadow:
+                    "rgba(0, 0, 0, 0.4) 16px 24px 20px 8px, rgba(184, 180, 180, 0.08) 0px 2px 0px 0px inset",
+                }}
+              >
+                <div className="flex w-full items-start justify-between">
+                  <div className="flex h-[80px] w-[30px] items-center justify-center">
+                    <Icon
+                      className="h-[28px] w-[28px] text-white"
+                      strokeWidth={1.5}
+                    />
+                  </div>
+                  <div
+                    className="absolute right-[10px] top-[10px] flex h-[40px] w-[40px] items-center justify-center rounded-full bg-[#0A0A0A]"
+                    style={{
+                      boxShadow:
+                        "rgba(184, 180, 180, 0.14) 0px 2px 0px 0px inset",
+                    }}
+                  >
+                    <span className="font-jakarta text-[16px] font-medium leading-none text-white">
+                      {" "}
+                      {i + 1}{" "}
+                    </span>
+                  </div>
+                </div>
+                <div className="mb-[25px]">
+                  <h3 className="font-jakarta text-[20px] font-bold leading-[1.3] text-white">
+                    {item.title}
+                  </h3>
+                  <p className="mt-[10px] max-w-[320px] font-inter text-[15px] font-medium leading-[1.55] text-[#FFFFFF99]">
+                    {item.body}
+                  </p>
+                </div>
+                <div className="mt-auto h-px w-full bg-white/10" />
+                <div className="mt-[20px]">
+                  <div className="inline-flex h-[38px] items-center rounded-full border border-white/10 bg-[#111111] px-[14px]">
+                    <span className="font-jakarta text-[13px] font-medium leading-none text-white/70">
+                      Step {i + 1}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
-      );
-    })}
-  </div>
-</div>
-      {/* ================= BOTTOM CTA ================= */}
+      </div>
       <div
-        className="
-          mx-auto
-          mt-[34px]
-          flex
-          w-full
-          max-w-[568px]
-          flex-col
-          items-start
-          justify-between
-          gap-[18px]
-          rounded-[12px]
-          bg-[#0F0F0F]
-          px-[20px]
-          py-[18px]
-          sm:flex-row
-          sm:items-center
-        "
+        ref={ctaRef}
+        className="mx-auto mt-[44px] flex h-[112px] w-[calc(100%-40px)] max-w-[840px] flex-col items-start justify-between rounded-[25px] bg-[#0F0F0F] p-[24px] max-[1399px]:h-[195px] max-[767px]:h-[316px] max-md:w-[calc(100%-40px)] max-md:max-w-full max-md:p-[24px] max-sm:w-[calc(100%-40px)] max-sm:max-w-full max-sm:p-[20px] min-[1400px]:flex-row min-[1400px]:items-center"
         style={{
+          transform: ctaVisible ? "translateX(0)" : "translateX(-100px)",
+          opacity: ctaVisible ? 1 : 0,
+          transition:
+            "transform 900ms cubic-bezier(0.16, 1, 0.3, 1), opacity 900ms ease",
+          transitionDelay: "120ms",
           boxShadow:
             "rgba(0, 0, 0, 0.4) 16px 24px 20px 8px, rgba(184, 180, 180, 0.08) 0px 2px 0px 0px inset",
         }}
       >
-        {/* CTA text */}
         <div>
-          <div className="flex items-center gap-[7px]">
-            <CircleDot
-              className="h-[14px] w-[14px] text-white"
-              strokeWidth={1.5}
-            />
-
-            <h3 className="font-jakarta text-[12px] font-bold leading-none text-white">
+          <div className="flex items-center gap-[7px] max-sm:flex-col max-sm:items-start max-sm:gap-0">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 256 256"
+              className="h-[24px] w-[24px] shrink-0 max-sm:h-[24px] max-sm:w-[24px]"
+              fill="white"
+            >
+              <g>
+                <path
+                  d="M224,128a96,96,0,1,1-96-96A96,96,0,0,1,224,128Z"
+                  opacity="0.2"
+                />
+                <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM80,108a12,12,0,1,1,12,12A12,12,0,0,1,80,108Zm104,0a8,8,0,0,1-8,8H152a8,8,0,0,1,0-16h24A8,8,0,0,1,184,108Zm-9.08,48c-10.29,17.79-27.39,28-46.92,28s-36.63-10.2-46.92-28a8,8,0,1,1,13.84-8c7.47,12.91,19.21,20,33.08,20s25.61-7.1,33.08-20a8,8,0,1,1,13.84,8Z" />
+              </g>
+            </svg>
+            <h3 className="font-jakarta text-[20px] font-bold leading-[32px] text-[#FFFFFF] max-sm:mt-[12px] max-sm:w-full">
               I am with you in every step
             </h3>
           </div>
-
-          <p className="mt-[8px] font-jakarta text-[9px] font-medium leading-[1.4] text-white/60">
+          <p className="mt-[8px] w-full font-inter text-[15px] font-medium leading-[27px] text-[#FFFFFF99] max-sm:w-full max-sm:mb-[-60px]">
             alongside you at each step for seamless experience
           </p>
         </div>
-
-        {/* Buttons */}
-        <div className="flex shrink-0 items-center gap-[8px]">
+        <div className="flex items-center gap-[16px] max-sm:w-full max-sm:flex-col max-sm:gap-[20px] sm:mb-4">
           <a
             href="#projects"
-            className="
-              flex
-              h-[36px]
-              items-center
-              justify-center
-              rounded-full
-              px-[16px]
-              font-jakarta
-              text-[10px]
-              font-bold
-              leading-none
-              text-white
-              transition-transform
-              duration-300
-              hover:scale-[1.03]
-            "
+            className="flex h-[58px] w-[175px] items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[16px] font-bold leading-none text-white md:mt-5 sm:mt-[84px] max-sm:h-[58px] max-sm:w-[310px]"
             style={{
               background:
                 "linear-gradient(180deg, rgba(120,120,120) -382%, #0A0A0A 100%)",
@@ -329,28 +305,11 @@ useEffect(() => {
           >
             See All Projects
           </a>
-
           <a
             href="#contact"
-            className="
-              flex
-              h-[36px]
-              items-center
-              justify-center
-              rounded-full
-              px-[16px]
-              font-jakarta
-              text-[10px]
-              font-medium
-              leading-none
-              text-[#0A0A0A]
-              transition-transform
-              duration-300
-              hover:scale-[1.03]
-            "
+            className="flex h-[58px] w-[154px] items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[16px] font-medium leading-none text-[#0A0A0A] md:mt-5 sm:mt-[84px] max-sm:h-[58px] max-sm:w-[310px]"
             style={{
-              background:
-                "linear-gradient(180deg, #FFFFFF 0%, #787878 140%)",
+              background: "linear-gradient(180deg, #FFFFFF 0%, #787878 140%)",
             }}
           >
             Contact Now

@@ -146,7 +146,7 @@ export default function Profile() {
               />
               <div className="absolute inset-0 bg-black/[0.08]" />
               <div className="absolute bottom-[12px] left-1/2 -translate-x-1/2">
-                <div className="flex h-[33px] w-full items-center justify-center gap-[10px] rounded-full bg-[#080808] px-[12px] py-[6px] backdrop-blur-[8px]">
+                <div className="flex h-[33px] w-full items-center justify-center gap-[10px] px-[12px] py-[6px]">
                   <span className="relative flex h-[7px] w-[7px] shrink-0 items-center justify-center">
                     <span className="absolute h-[15px] w-[15px] animate-ping rounded-full bg-[#31EE33]" />
                     <span
@@ -257,7 +257,7 @@ export default function Profile() {
                 {experience.map((row) => (
                   <div
                     key={`${row.role}-${row.year}`}
-                    className="group flex min-h-[60px] w-full flex-col items-start justify-between gap-3 rounded-[10px] bg-[#080808] px-[28px] py-[28px] md:min-h-0 md:h-[69px] md:flex-row md:items-center md:justify-between md:gap-[15px] md:px-[22px] md:py-[14px]"
+                    className="group flex min-h-[60px] w-full flex-col items-start justify-between gap-3 rounded-[10px] bg-[#080808] px-[28px] py-[28px] md:min-h-0 md:h-[64px] md:flex-row md:items-center md:justify-between md:gap-[15px] md:px-[22px] md:py-[14px]"
                     style={{
                       boxShadow: "rgba(0,0,0,0.6) 12px 24px 20px 8px",
                     }}

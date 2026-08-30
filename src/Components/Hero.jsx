@@ -138,22 +138,29 @@ function ProjectCard({ project, className = "", animationDelay = 0 }) {
   });
 
   const handleMouseMove = (e) => {
-    if (!fadeRef.current) return;
-    const rect = fadeRef.current.getBoundingClientRect();
     setCursorPos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
+      x: e.clientX,
+      y: e.clientY,
     });
+  };
+
+  const handleMouseEnter = (e) => {
+    setCursorPos({
+      x: e.clientX,
+      y: e.clientY,
+    });
+
+    setHovered(true);
   };
 
   return (
     <a
       ref={fadeRef}
       href={project.href}
-      onMouseEnter={() => setHovered(true)}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={() => setHovered(false)}
       onMouseMove={handleMouseMove}
-      className={`relative w-full ${className}`}
+      className={`relative block w-full ${className}`}
     >
       <div
         className={`relative h-full w-full overflow-hidden rounded-[20px] border border-white/[0.08] bg-[#111111] p-4 transition-all duration-[1100ms] ease-[cubic-bezier(0.19,1,0.22,1)] ${
@@ -172,7 +179,6 @@ function ProjectCard({ project, className = "", animationDelay = 0 }) {
           alt=""
           className="h-full w-full object-cover object-left"
         />
-
         <div className="absolute bottom-2 left-2 flex h-[50px] w-[50px] items-center justify-center overflow-hidden rounded-full border border-white/10 bg-[#0a0a0a] text-white">
           <span
             className="absolute inset-0 flex items-center justify-center transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
@@ -185,7 +191,6 @@ function ProjectCard({ project, className = "", animationDelay = 0 }) {
               style={{ transform: "rotate(10.5deg)" }}
             />
           </span>
-
           <span
             className="absolute inset-0 flex items-center justify-center transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
             style={{
@@ -199,16 +204,18 @@ function ProjectCard({ project, className = "", animationDelay = 0 }) {
           </span>
         </div>
       </div>
-
       {hovered && (
         <div
-          className="pointer-events-none absolute z-[50] hidden -translate-x-1/2 -translate-y-1/2 md:block"
+          className="pointer-events-none fixed z-[9999] hidden md:block"
           style={{
             left: `${cursorPos.x}px`,
             top: `${cursorPos.y}px`,
+            transform: "translate3d(-50%, -50%, 0)",
+            transition:
+              "left 120ms cubic-bezier(0.16,1,0.3,1), top 120ms cubic-bezier(0.16,1,0.3,1)",
           }}
         >
-          <div className="flex h-[40px] min-w-[120px] items-center justify-center rounded-full border border-white/70 bg-white/[0.08] text-[13px] font-medium text-white backdrop-blur-md">
+          <div className="flex h-[40px] min-w-[120px] items-center justify-center rounded-full border border-white/70 bg-white/[0.08] px-4 text-[13px] font-medium text-white backdrop-blur-md">
             View project
           </div>
         </div>
@@ -216,7 +223,6 @@ function ProjectCard({ project, className = "", animationDelay = 0 }) {
     </a>
   );
 }
-
 function MobileProjectCard({ project, className = "" }) {
   const [fadeRef, fadeVisible] = useFadeInLeft();
   return (
@@ -237,9 +243,7 @@ function MobileProjectCard({ project, className = "" }) {
             className="h-full w-full object-cover object-left"
             loading="eager"
           />
-
           <div className="pointer-events-none absolute inset-0 bg-black/10" />
-
           <div className="absolute bottom-[-4px] left-[-4px] flex h-[50px] w-[50px] items-center justify-center overflow-hidden rounded-full border border-white/10 bg-[#0a0a0a] text-white">
             <ArrowUpRight
               className="h-[22px] w-[22px]"
@@ -253,6 +257,7 @@ function MobileProjectCard({ project, className = "" }) {
     </a>
   );
 }
+
 function StaggeredParagraph({
   text,
   className = "",
