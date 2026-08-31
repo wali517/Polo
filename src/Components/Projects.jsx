@@ -228,7 +228,7 @@ export default function Projects() {
     <div>
       <section className="border rounded-[50px] pb-36 sm:pb-20">
         <div className="relative w-full px-6 sm:px-8">
-          <div className="mx-auto w-full max-w-[1100px]">
+          <div className="mx-auto w-full max-w-[1050px]">
             <div className="flex w-full flex-col gap-7 pb-4 pt-[100px] md:pt-24 colg:pt-24">
               <div className="w-full">
                 <div className="inline-flex h-[34px] items-center gap-2 rounded-full border border-white/10 bg-[#111111] px-3.5 font-inter text-[15px] font-medium text-white">
@@ -303,7 +303,7 @@ export default function Projects() {
                   step={0.06}
                   className="mt-7 max-w-full font-jakarta text-[15px] text-[#FFFFFF99] md:text-[16px]"
                 />
-                <div className="mt-7 flex w-full flex-col gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center min-[1400px]:absolute min-[1400px]:right-40 min-[1400px]:bottom-4">
+                <div className="mt-7 flex w-full flex-col gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:bottom-4 min-[1400px]:-translate-x-[-180px]">
                   <a
                     href="./projects"
                     className="inline-flex h-[62px] w-[290px] items-center justify-center rounded-full border border-white/[0.06] px-[26px] py-[13px] font-jakarta text-[15px] font-medium text-[#FFFFFF] sm:h-[60px] sm:w-auto sm:text-[16px]"
@@ -333,7 +333,7 @@ export default function Projects() {
           id="projects"
           className="relative mt-7 w-full px-6 sm:px-8 sm:mt-0 lg:mt-6"
         >
-          <div className="mx-auto w-full max-w-[1100px]">
+          <div className="mx-auto w-full max-w-[1050px]">
             <div className="hidden sm:grid grid-cols-1 gap-4 lg:gap-5 min-[1400px]:grid-cols-2">
               <div className="flex w-full flex-col gap-4 lg:gap-5">
                 <ProjectCard
