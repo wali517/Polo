@@ -383,7 +383,7 @@ export default function Services() {
     <>
       <section
         id="services"
-        className="relative overflow-hidden rounded-[50px] border border-white/[0.08] bg-[#090909] py-24 sm:py-24 sm:pb-5 lg:py-24 lg:pb-5"
+        className="relative overflow-hidden rounded-[50px] border border-white/[0.08] bg-[#090909] py-24 sm:py-24 sm:pb-20 lg:py-24 lg:pb-5"
       >
         <div className="mx-auto flex w-full max-w-[1100px] flex-col items-center px-6 sm:px-8">
           <div className="flex w-full flex-col gap-7 min-[1400px]:flex-row min-[1400px]:items-end min-[1400px]:justify-between min-[1400px]:gap-10">
@@ -435,20 +435,20 @@ export default function Services() {
                 image={firstCardImage}
                 showImage
                 icon="website"
-                className="h-full w-full"
+                className="h-[390px] sm:h-[430px] w-full"
               />
               <ServiceCard
                 service={graphic}
                 showImage={false}
                 icon="graphic"
-                className="h-[158px] w-full"
+                className="h-[180px] sm:h-[150px] w-full"
               />
             </div>
             <div className="flex w-full flex-col gap-6">
               <ServiceCard
                 service={logo}
                 icon="graphic"
-                className="h-[158px] w-full"
+                className="h-[175px] sm:h-[158px] w-full"
               />
               <div className="group relative flex h-[440px] w-full flex-col overflow-hidden rounded-[20px] border border-white/[0.06] bg-[#111111] p-[30px] shadow-[16px_24px_20px_8px_rgba(0,0,0,0.4)]">
                 <div className="relative z-10">

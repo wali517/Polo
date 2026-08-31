@@ -69,13 +69,6 @@ export const serviceTags = [
   "Optimization",
 ];
 
-export const projects = [
-  { name: "Fade", tag: "Brand studio", accent: "from-zinc-600 via-zinc-800 to-black" },
-  { name: "One Day, We Met", tag: "Editorial", accent: "from-stone-700 via-stone-900 to-black" },
-  { name: "Branding", tag: "Identity system", accent: "from-neutral-200 via-neutral-400 to-neutral-700" },
-  { name: "Atom AI", tag: "SaaS product", accent: "from-slate-700 via-slate-900 to-black" },
-];
-
 export const whyMe = [
   {
     good: { title: "Skilled Professional", body: "Gain access to top-tier talent with years of experience, ensuring flawless execution." },
