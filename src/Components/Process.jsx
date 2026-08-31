@@ -141,7 +141,7 @@ export default function Process() {
   return (
     <section
       id="process"
-      className="w-full overflow-hidden rounded-[30px] border border-b-0 bg-[#080808] py-[90px] lg:py-[100px]"
+      className="w-full overflow-hidden rounded-[50px] border bg-[#080808] py-[90px] lg:py-[100px]"
     >
       <div className="mx-auto w-full max-w-full">
         <div className="flex w-full flex-col items-center text-center">

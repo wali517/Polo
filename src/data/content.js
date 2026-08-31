@@ -5,16 +5,6 @@ export const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
-export const heroNotes = [
-  { quote: "Working with him was a game changer!", author: "-pranavnb", rotate: "-rotate-6" },
-  { quote: "We increased our conversions by 200%", author: "-vijaynb", rotate: "rotate-3" },
-];
-
-export const heroPreviews = [
-  { title: "Fade", tag: "Studio site", accent: "from-zinc-700 via-zinc-800 to-black" },
-  { title: "One Day, We Met", tag: "Editorial", accent: "from-neutral-800 via-neutral-900 to-black" },
-];
-
 export const skills = ["Product Design", "UX Design", "UI Design", "Framer", "Branding", "Webflow"];
 
 export const experience = [
@@ -51,22 +41,18 @@ export const services = [
   {
     title: "Website Design",
     body: "Designing breathtaking, user-centric websites that boost engagement, conversions, and growth, perfectly aligned with your brand.",
-    icon: "layout",
   },
   {
     title: "Logo Design",
     body: "Crafting distinctive, scalable, and impactful logos that embody your brand's identity and vision.",
-    icon: "pen-tool",
   },
   {
     title: "Framer Design",
     body: "Bringing ideas to life with interactive, user-centered Framer designs that simplify complexity and elevate user experience.",
-    icon: "zap",
   },
   {
     title: "Graphic Design",
     body: "Crafting bold, engaging, and versatile graphic designs that elevate your brand and captivate your audience.",
-    icon: "shapes",
   },
 ];
 

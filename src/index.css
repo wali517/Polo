@@ -559,3 +559,133 @@ body {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
+
+ /* ==================================================
+           CARDS
+           
+           Fade + move from LEFT when cards enter viewport.
+        ================================================== */
+
+        .services-cards-hidden {
+          opacity: 0;
+          transform: translate3d(-70px, 0, 0);
+        }
+
+        .services-cards-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+
+  transition:
+    opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+        /* ==================================================
+           SLIDER VISIBILITY
+
+           IMPORTANT:
+           NO translate animation here.
+           It simply appears when it enters the viewport.
+        ================================================== */
+
+        .services-slider-hidden {
+          opacity: 0;
+        }
+
+        .services-slider-visible {
+          opacity: 1;
+
+          transition:
+            opacity 0.6s ease;
+        }
+
+
+        /* ==================================================
+           SERVICE MARQUEE
+        ================================================== */
+
+        .services-marquee-track {
+          animation:
+            services-marquee-left
+            var(--marquee-duration)
+            linear
+            infinite;
+
+          will-change: transform;
+        }
+
+        .services-marquee-reverse {
+          animation-name: services-marquee-right;
+        }
+
+
+        /* ==================================================
+           FRAMER IMAGE TICKER
+        ================================================== */
+
+        .services-image-track {
+          animation:
+            services-images
+            22s
+            linear
+            infinite;
+
+          will-change: transform;
+        }
+
+
+        /* ==================================================
+           KEYFRAMES
+        ================================================== */
+
+        @keyframes services-marquee-left {
+          from {
+            transform: translate3d(0, 0, 0);
+          }
+
+          to {
+            transform: translate3d(-33.333333%, 0, 0);
+          }
+        }
+
+        @keyframes services-marquee-right {
+          from {
+            transform: translate3d(-33.333333%, 0, 0);
+          }
+
+          to {
+            transform: translate3d(0, 0, 0);
+          }
+        }
+
+        @keyframes services-images {
+          from {
+            transform: translate3d(0, 0, 0);
+          }
+
+          to {
+            transform: translate3d(-33.333333%, 0, 0);
+          }
+        }
+
+
+        /* ==================================================
+           REDUCED MOTION
+        ================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+          .services-cards-hidden {
+            opacity: 1;
+            transform: none;
+          }
+
+          .services-slider-hidden {
+            opacity: 1;
+          }
+
+          .services-marquee-track,
+          .services-image-track {
+            animation-play-state: paused;
+          }
+        }

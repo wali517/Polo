@@ -93,7 +93,7 @@ export default function Profile() {
   return (
     <section
       id="profile"
-      className="w-full rounded-t-[40px] rounded-b-none bg-[#0f0f0f] py-[90px]"
+      className="w-full rounded-[50px] bg-[#0f0f0f] py-[90px]"
     >
       <div className="mx-auto flex w-full max-w-[1100px] flex-col items-center px-5 sm:px-8">
         <div className="flex w-full flex-col items-center text-center">
