@@ -79,14 +79,7 @@ export default function FAQ() {
       <div className="mx-auto w-full max-w-[1120px] px-[18px] py-[80px] sm:px-8 lg:py-[90px]">
         <div className="flex flex-col gap-[50px] min-[1400px]:grid min-[1400px]:grid-cols-[1fr_1.1fr] min-[1400px]:items-start min-[1400px]:gap-[44px]">
           <div className="min-w-0 min-[1400px]:sticky min-[1400px]:top-[105px] min-[1400px]:self-start sm:w-[720px] lg:w-full lg:max-w-[720px]">
-            <div
-              className="inline-flex h-[40px] items-center gap-[9px] rounded-[20px] px-[14px]"
-              style={{
-                background: "#111111",
-                boxShadow:
-                  "rgba(0,0,0,0.4) 16px 24px 20px 8px, rgba(184,180,180,0.08) 0px 2px 0px 0px inset",
-              }}
-            >
+            <div className="inline-flex h-[40px] items-center gap-[9px] rounded-[20px] px-[14px]" style={{background: "#111111", boxShadow: "rgba(0,0,0,0.4) 16px 24px 20px 8px, rgba(184,180,180,0.08) 0px 2px 0px 0px inset",}}>
               <BullseyeIcon />
               <span
                 className="font-inter text-[15px] font-medium leading-none"
