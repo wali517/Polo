@@ -248,7 +248,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative border rounded-[50px] border-white/10 "
+      className="relative border rounded-[50px] bg-[#080808] "
       style={{
         borderColor: "rgba(255,255,255,0.08)",
         background: "#0a0a0a",

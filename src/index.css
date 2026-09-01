@@ -28,25 +28,12 @@
 @theme {
   /* ---- Color system ---- */
   --color-base: #0a0a0a;
-  --color-primary: #FFFFFF99;
-  --color-base-soft: #101012;
-  --color-surface: #131315;
-  --color-surface-2: #18181b;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-soft: rgba(255, 255, 255, 0.05);
-  --color-heading: #f6f6f7;
-  --color-body: #a4a4ab;
-  --color-dim: #6c6c74;
-  --color-accent: #eeeeef;
-  --color-gold: #f2c14e;
-  --color-live: #4ade80;
-
+  --color-primary: #FFFFFF;
+  --color-secondary: #FFFFFF99;
   /* ---- Font ---- */
-
   --font-satoshi: "Satoshi", "Satoshi Placeholder", system-ui, sans-serif;
   --font-inter: "Inter", system-ui, sans-serif;
   --font-jakarta: "Plus Jakarta Sans", system-ui, sans-serif;
-  
   /* ---- Custom Breakpoints ---- */
   --breakpoint-coxs: 375px;
   --breakpoint-xs: 425px;
@@ -60,16 +47,11 @@
 }
 
 @layer base {
-  * {
-    border-color: var(--color-border);
-  }
-
 html {
     scroll-behavior: smooth;
     width: 100%;
     height: 100%;
 }
-
 body {
     background-color: var(--color-base);
     color: var(--color-body);
@@ -79,142 +61,53 @@ body {
     min-height: 100vh;
     min-height: 100dvh;
 }
-
   #root {
     width: 100%;
     min-height: 100vh;
     min-height: 100dvh;
   }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-display);
+  h1,h2,h3,h4,h5,h6 {
+    font-family: var(--font-satoshi);
     color: var(--color-heading);
     letter-spacing: -0.02em;
   }
-
   ::selection {
-    background-color: var(--color-accent);
+    background-color: var(--color-base);
     color: var(--color-accent-foreground);
   }
 }
-
 @layer components {
   .container-page {
     width: 100%;
     max-width: 84rem;
     margin-inline: auto;
     padding-inline: 1.25rem;
-
     @variant coxs {
       padding-inline: 1.25rem;
     }
-
     @variant xs {
       padding-inline: 1.375rem;
     }
-
     @variant sm {
       padding-inline: 1.5rem;
     }
-
     @variant md {
       padding-inline: 2rem;
     }
-
     @variant lg {
       padding-inline: 2.5rem;
     }
-
     @variant xl {
       padding-inline: 3rem;
     }
-
     @variant 2xl {
       padding-inline: 3.5rem;
     }
-
     @variant 3xl {
       padding-inline: 4rem;
     }
   }
-
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    border: 1px solid var(--color-border);
-    background-color: var(--color-surface);
-    color: var(--color-body);
-    font-size: 0.8125rem;
-    font-weight: 500;
-    padding: 0.4rem 0.9rem;
-    border-radius: 999px;
   }
-
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-    background: linear-gradient(180deg, #ffffff 0%, #d9d9dc 100%);
-    color: var(--color-accent-foreground);
-    font-weight: 600;
-    font-size: 0.9rem;
-    padding: 0.8rem 1.5rem;
-    border-radius: 999px;
-    transition:
-      transform 0.2s ease,
-      opacity 0.2s ease;
-  }
-
-  .btn-primary:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
-  }
-
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-    background-color: var(--color-surface-2);
-    border: 1px solid var(--color-border);
-    color: var(--color-heading);
-    font-weight: 600;
-    font-size: 0.9rem;
-    padding: 0.8rem 1.5rem;
-    border-radius: 999px;
-    transition:
-      background-color 0.2s ease,
-      transform 0.2s ease;
-  }
-
-  .btn-secondary:hover {
-    background-color: #202024;
-    transform: translateY(-1px);
-  }
-
-  .card {
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 1.5rem;
-  }
-
-  .section-pad {
-    padding-block: 5rem;
-  }
-
-  @media (min-width: 992px) {
-    .section-pad {
-      padding-block: 7rem;
-    }
-  }
-}
 
 @layer utilities {
   .text-balance {
@@ -243,7 +136,6 @@ body {
       black 0%,
       transparent 100%
     );
-
     -webkit-mask-image: linear-gradient(
       to top,
       black 0%,
@@ -257,49 +149,41 @@ body {
     opacity: 0;
     transform: translate3d(0, 14px, 0);
   }
-
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
 }
-
 @keyframes cardPulse {
   0%,
   100% {
     transform: rotate(var(--card-rotate)) translate3d(0, 0, 0) scale(1);
   }
-
   50% {
     transform: rotate(var(--card-rotate)) translate3d(0, -8px, 0) scale(1.025);
   }
 }
-
 @keyframes svgPulse {
   0%,
   100% {
     transform: scale(1) translate3d(0, 0, 0);
     opacity: 0.65;
   }
-
   50% {
     transform: scale(1.12) translate3d(0, -3px, 0);
     opacity: 1;
   }
 }
-
 .pulse-card .polo-card-float {
   animation:
     cardPulse 4.5s ease-in-out infinite;
 }
-
 .pulse-svg {
   animation:
     svgPulse 4.5s ease-in-out infinite;
   transform-origin: center center;
   will-change: transform, opacity;
 }
-
 @keyframes cardFloat {
   0%,
   100% {
@@ -307,65 +191,52 @@ body {
       rotate(var(--card-rotate))
       translate3d(0, 0, 0);
   }
-
   50% {
     transform:
       rotate(var(--card-rotate))
       translate3d(0, -8px, 0);
   }
 }
-
 .polo-card-float {
   animation:
     cardFloat
     5s
     ease-in-out
     infinite;
-
   animation-delay:
     var(--float-delay);
-
   transform-origin:
     center center;
-
   will-change:
     transform;
 }
-
 @keyframes planeDriftA {
   0%,
   100% {
     transform:
       rotate(96deg)
       translate3d(0, 0, 0);
-
     opacity: 0.8;
   }
-
   50% {
     transform:
       rotate(96deg)
       translate3d(4px, -5px, 0);
-
     opacity: 0.55;
   }
 }
-
 @keyframes planeDriftB {
   0%,
   100% {
     transform:
       rotate(-8deg)
       translate3d(0, 0, 0);
-
     opacity: 0.75;
   }
-
   50% {
     transform:
       rotate(-8deg)
       translate3d(-4px, 5px, 0);
-
     opacity: 0.5;
   }
 }
@@ -378,7 +249,6 @@ body {
       rotate(var(--star-angle))
       scale(calc(var(--star-scale) * 0.85));
   }
-
   8% {
     opacity: 0.95;
     transform:
@@ -390,7 +260,6 @@ body {
       rotate(var(--star-angle))
       scale(var(--star-scale));
   }
-
   60% {
     opacity: 0.9;
     transform:
@@ -402,7 +271,6 @@ body {
       rotate(var(--star-angle))
       scale(var(--star-scale));
   }
-
   88% {
     opacity: 0.5;
     transform:
@@ -414,7 +282,6 @@ body {
       rotate(var(--star-angle))
       scale(calc(var(--star-scale) * 0.95));
   }
-
   100% {
     opacity: 0;
     transform:
@@ -427,36 +294,27 @@ body {
       scale(calc(var(--star-scale) * 0.85));
   }
 }
-
 .polo-star {
   position: absolute;
   width: 180px;
   height: 1px;
-
   transform-origin: center center;
-
   animation:
     poloStarMove
     var(--star-duration)
     linear
     var(--star-delay)
     infinite;
-
   will-change: transform, opacity;
 }
-
 .polo-star-line {
   position: absolute;
   left: 0;
   top: 50%;
-
   width: 180px;
   height: 1px;
-
   transform: translateY(-50%);
-
   border-radius: 999px;
-
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0) 0%,
@@ -467,86 +325,71 @@ body {
     rgba(255, 255, 255, 0.85) 100%
   );
 }
-
 @media (max-width: 639px) {
   .polo-star {
     left: 0% !important;
     width: 72px;
   }
-
   .polo-star-line {
     width: 72px;
   }
 }
-
 @media (min-width: 640px) and (max-width: 1023px) {
   .polo-star {
     left: 2% !important;
     width: 120px;
   }
-
   .polo-star-line {
     width: 120px;
   }
 }
-
 @media (min-width: 1024px) {
   .polo-star {
     width: 180px;
   }
-
   .polo-star-line {
     width: 180px;
   }
 }
-
 @media (prefers-reduced-motion: reduce) {
   .polo-star,
   .polo-star-line {
     animation: none !important;
   }
 }
-
 @keyframes profilePulse {
   0% {
     transform: scale(0.7);
     opacity: 0.7;
   }
-
   70% {
     transform: scale(1.5);
     opacity: 0;
   }
-
   100% {
     transform: scale(1.5);
     opacity: 0;
   }
 }
-
 .animate-profile-pulse {
   animation: profilePulse 1.8s ease-out infinite;
 }
-
 @keyframes arrowPulse {
   0%,
   100% {
     transform: translateY(0);
     opacity: 1;
   }
-
   50% {
     transform: translateY(8px);
     opacity: 0.45;
   }
 }
-
 .fade-up-on-scroll {
   animation: fadeUpButton 1s cubic-bezier(0.19, 1, 0.22, 1) both;
   animation-timeline: view();
   animation-range: entry 0% cover 35%;
 }
-
 .fade-up-button {
   opacity: 0;
   transform: translateY(55px) scale(0.96);
@@ -554,17 +397,14 @@ body {
     opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1),
     transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
 }
-
 .fade-up-button-show {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
-
 .services-cards-hidden {
 opacity: 0;
 transform: translate3d(-70px, 0, 0);
 }
-
 .services-cards-visible {
 opacity: 1;
 transform: translate3d(0, 0, 0);
@@ -572,17 +412,14 @@ transition:
 opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1),
 transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 .services-slider-hidden {
 opacity: 0;
 }
-
 .services-slider-visible {
 opacity: 1;
 transition:
 opacity 0.6s ease;
 }
-
 .services-marquee-track {
 animation:
 services-marquee-left
@@ -591,11 +428,9 @@ linear
 infinite;
 will-change: transform;
 }
-
 .services-marquee-reverse {
 animation-name: services-marquee-right;
 }
-
 .services-image-track {
 animation:
 services-images
@@ -604,47 +439,38 @@ linear
 infinite;
 will-change: transform;
 }
-
 @keyframes services-marquee-left {
 from {
 transform: translate3d(0, 0, 0);
 }
-
 to {
 transform: translate3d(-33.333333%, 0, 0);
 }
 }
-
 @keyframes services-marquee-right {
 from {
 transform: translate3d(-33.333333%, 0, 0);
 }
-
 to {
 transform: translate3d(0, 0, 0);
 }
 }
-
 @keyframes services-images {
 from {
 transform: translate3d(0, 0, 0);
 }
-
 to {
 transform: translate3d(-33.333333%, 0, 0);
 }
 }
-
 @media (prefers-reduced-motion: reduce) {
 .services-cards-hidden {
 opacity: 1;
 transform: none;
 }
-
 .services-slider-hidden {
 opacity: 1;
 }
-
 .services-marquee-track,
 .services-image-track {
 animation-play-state: paused;
