@@ -254,7 +254,7 @@ export default function Testimonials() {
         background: "#0a0a0a",
       }}
     >
-      <div className="mx-auto w-full max-w-[1120px] px-[18px] py-[80px] sm:px-8 lg:py-[100px]">
+      <div className="mx-auto w-full max-w-[1120px] px-[24px] py-[80px] sm:px-8 lg:py-[100px]">
         <div className="flex flex-col gap-[50px] min-[1400px]:grid min-[1400px]:grid-cols-[1fr_1.1fr] min-[1400px]:items-start min-[1400px]:gap-[44px]">
           <div className="min-w-0 min-[1400px]:sticky min-[1400px]:top-[105px] min-[1400px]:self-start">
             <div

@@ -76,7 +76,7 @@ export default function FAQ() {
       id="faq-section"
       className="border rounded-[50px] bg-[#0a0a0a] py-[20px] sm:py-[30px]"
     >
-      <div className="mx-auto w-full max-w-[1120px] px-[18px] py-[80px] sm:px-8 lg:py-[90px]">
+      <div className="mx-auto w-full max-w-[1120px] px-[24px] py-[80px] sm:px-8 lg:py-[90px]">
         <div className="flex flex-col gap-[50px] min-[1400px]:grid min-[1400px]:grid-cols-[1fr_1.1fr] min-[1400px]:items-start min-[1400px]:gap-[44px]">
           <div className="min-w-0 min-[1400px]:sticky min-[1400px]:top-[105px] min-[1400px]:self-start sm:w-[720px] lg:w-full lg:max-w-[720px]">
             <div className="inline-flex h-[40px] items-center gap-[9px] rounded-[20px] px-[14px]" style={{background: "#111111", boxShadow: "rgba(0,0,0,0.4) 16px 24px 20px 8px, rgba(184,180,180,0.08) 0px 2px 0px 0px inset",}}>
@@ -87,7 +87,7 @@ export default function FAQ() {
                   color: "#ffffff",
                 }}
               >
-                Happy Clients
+                FAQ Section
               </span>
             </div>
             <h2 className="mt-[22px] font-satoshi text-[42px] font-medium leading-[1.12] tracking-[-0.045em] sm:text-[48px] lg:text-[54px]">
@@ -96,18 +96,18 @@ export default function FAQ() {
                 step={0.22}
                 className="text-white"
               >
-                Clients
+                Question,
               </StaggeredHeading>{" "}
               <StaggeredHeading
                 startDelay={0.65}
                 step={0.25}
                 className="text-[#FFFFFF99]"
               >
-                Love me
+                Answers
               </StaggeredHeading>
             </h2>
             <StaggeredParagraph
-              text="Trusted by 100+ happy clients, adding $250M+ in revenue."
+              text="Exceptional creativity and attention to detail! The final product not only looks great but also enhances user engagement"
               startDelay={1.15}
               step={0.08}
               className="mt-[20px] max-w-[500px] font-jakarta text-[15px] leading-[1.65] text-[#FFFFFF99] sm:text-[16px]"
