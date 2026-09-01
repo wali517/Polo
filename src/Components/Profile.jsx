@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { DribbbleIcon, InstagramIcon, XIcon } from "./SocialIcons";
 import { experience, skills } from "../data/content";
+import  johan from "../assets/images/Profile/johan.avif";
 import "../index.css";
 
 const PROFILE_IMAGE =
-  "https://framerusercontent.com/images/bS5yI534QrgZ6plEFuXPt84TkA.png?width=673&height=962";
+  johan;
 
 function BullseyeIcon() {
   return (

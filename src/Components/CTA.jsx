@@ -1,5 +1,5 @@
 import React from "react";
-
+import cta1 from "../assets/images/Ctf/cta1.avif";
 function BullseyeIcon() {
   return (
     <span
@@ -176,7 +176,7 @@ export default function CTA() {
                 style={{ borderRadius: "inherit" }}
               >
                 <img
-                  src="https://framerusercontent.com/images/IwwlXF60xjgLFBH3Sj6kzl9eXs.png?scale-down-to=2048"
+                  src={cta1}
                   alt="Image banner"
                   className="h-full w-full"
                   style={{

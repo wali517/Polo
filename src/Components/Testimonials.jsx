@@ -1,13 +1,18 @@
 import { Star } from "lucide-react";
 import { stats, testimonials } from "../data/content";
+import client1 from "../assets/images/Client/client1.avif";
+import client2 from "../assets/images/Client/client2.avif";
+import client3 from "../assets/images/Client/client3.avif";
+import client4 from "../assets/images/Client/client4.avif";
+
 import "../index.css";
 
 // Framer source avatar images
 const AVATARS = [
-  "https://framerusercontent.com/images/eFraHAe16muHsBuOQT8J7PtnM.png?width=896&height=1344",
-  "https://framerusercontent.com/images/54tqpXnovhmg1DaaTUMYucwnE.png?width=2048&height=2048",
-  "https://framerusercontent.com/images/8vljaI1ESGZN8BSOxNQ8nHJdCw.png?width=1024&height=1024",
-  "https://framerusercontent.com/images/hmr5CgOg36xVV5pHu3aQPFGu9U.png?width=1856&height=2464",
+  client1,
+  client2,
+  client3,
+  client4
 ];
 
 function Stars({ rating }) {

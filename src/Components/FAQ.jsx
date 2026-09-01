@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Plus, Star } from "lucide-react";
 import { faqs } from "../data/content";
+import faq1 from "../assets/images/Ans/faq1.avif";
 import "../index.css";
 
 function BullseyeIcon() {
@@ -123,7 +124,7 @@ export default function FAQ() {
               <div className="flex items-center gap-[12px]">
                 <div className="h-[76px] w-[76px] overflow-hidden rounded-[8px] bg-[#222]">
                   <img
-                    src="https://framerusercontent.com/images/DeANEXSHfUPawiwrcmj8Tkiib1o.jpg?width=2000&height=2000"
+                    src={faq1}
                     alt="Ryan Harper"
                     className="h-full w-full object-cover"
                   />

@@ -1,6 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
-import heroVideo from "../assets/Hero.mp4";
+import heroVideo from "../assets/images/Hero/Hero.mp4";
+import card1 from "../assets/Images/Hero/card1.avif";
+import card2 from "../assets/Images/Hero/card2.avif";
+import card3 from "../assets/Images/Hero/card3.avif";
+import card4 from "../assets/Images/Hero/card4.avif";
 import "../index.css";
 
 const PROJECTS = [
@@ -8,25 +12,25 @@ const PROJECTS = [
     id: "fade",
     href: "./projects/fade",
     image:
-      "https://framerusercontent.com/images/1q1n0UavD6GRCdPoosEQxM5TmpQ.png?width=1920&height=1440",
+      card1,
   },
   {
     id: "brandin",
     href: "./projects/brandin",
     image:
-      "https://framerusercontent.com/images/sy0b9tueLscYoe1Yckd5M2kdM.jpeg?width=1200&height=1200",
+      card2,
   },
   {
     id: "studio",
     href: "./projects/studio",
     image:
-      "https://framerusercontent.com/images/B46VnW80N88dC2fK7yW0nsm1Fw.png?width=955&height=866",
+      card3,
   },
   {
     id: "atom-ai",
     href: "./projects/atom-ai",
     image:
-      "https://framerusercontent.com/images/wonjYFYHeebnK8WRvO1qondtAh4.png?width=1920&height=1440",
+      card4,
   },
 ];
 

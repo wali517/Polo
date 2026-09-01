@@ -12,6 +12,10 @@ import {
   Zap,
 } from "lucide-react";
 import { serviceTags, services } from "../data/content";
+import scard1 from "../assets/images/Service/scard1.avif";
+import scard2 from "../assets/images/Service/scard2.avif";
+import scard3 from "../assets/images/Service/scard3.avif";
+import scard4 from "../assets/images/Service/scard4.avif";
 import "../index.css";
 
 function WebsiteIcon() {
@@ -122,12 +126,11 @@ function ServiceIcon({ icon }) {
 }
 
 const firstCardImage =
-  "https://framerusercontent.com/images/IwwlXF60xjgLFBH3Sj6kzl9eXs.png?scale-down-to=2048&width=2400&height=1260";
-
+  scard1;
 const framerImages = [
-  "https://framerusercontent.com/images/Uh4eI5tuS1UcMjPLwFeqxnXBJKQ.png?scale-down-to=2048&width=3840&height=2880",
-  "https://framerusercontent.com/images/B6zI6nUrHNwrRM7ASHmAUUgXW0c.png?scale-down-to=2048&width=3514&height=2319",
-  "https://framerusercontent.com/images/qaXP9CBTkpCNVvyTQ6Uxc8kN5ts.png?scale-down-to=2048&width=4000&height=3000",
+  scard2,
+  scard3,
+  scard4,
 ];
 
 const fallbackServices = [
