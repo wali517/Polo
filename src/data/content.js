@@ -69,25 +69,6 @@ export const serviceTags = [
   "Optimization",
 ];
 
-export const whyMe = [
-  {
-    good: { title: "Skilled Professional", body: "Gain access to top-tier talent with years of experience, ensuring flawless execution." },
-    bad: { title: "Amateur Designer", body: "Lack of experience may result in design inconsistencies and overlooked details." },
-  },
-  {
-    good: { title: "Future-Ready Designs", body: "Crafting modern, scalable designs that grow with your business and stay ahead of trends." },
-    bad: { title: "Outdated Concepts", body: "Stale designs that don't reflect current trends or your evolving brand narrative." },
-  },
-  {
-    good: { title: "Client-Centric Collaboration", body: "Your vision leads the way — I work closely with you to bring ideas to life with precision and creativity." },
-    bad: { title: "Detached Communication", body: "Lack of collaboration and poor feedback loops can result in misaligned outcomes." },
-  },
-  {
-    good: { title: "Timely Project Tracking", body: "Stay informed with regular progress updates and timely deliverables." },
-    bad: { title: "Unstructured & Unreliable Work", body: "Inconsistent timelines and last-minute changes can compromise quality." },
-  },
-];
-
 export const stats = [
   { value: "100+", label: "Happy clients" },
   { value: "$250m", label: "revenue added" },
