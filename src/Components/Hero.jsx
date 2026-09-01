@@ -94,16 +94,16 @@ function CommentCard({
       style={{ "--card-rotate": `${rotate}deg`, "--float-delay": floatDelay }}
     >
       <div
-        className="polo-card-float relative w-[190px] overflow-hidden rounded-xl border border-white/10 bg-[#111111] xl:p-6"
+        className="polo-card-float relative w-[220px] overflow-hidden rounded-xl border border-white/10 bg-[#111111] xl:p-6"
         style={{
           boxShadow:
             "16px 24px 20px 8px rgba(0,0,0,0.4), 0 2px 0 0 rgba(184,180,180,0.08) inset",
         }}
       >
-        <p className="font-inter text-[13px] font-normal leading-[2] text-[#FFFFFF]">
+        <p className="font-inter text-[15px] font-normal leading-[2] text-[#FFFFFF]">
           "{children}"
         </p>
-        <p className="mt-3 font-inter text-right text-[12px] font-medium text-white/50">
+        <p className="mt-3 font-inter text-right text-[15px] font-medium text-white/50">
           -{author}
         </p>
       </div>
@@ -427,7 +427,7 @@ export default function Hero() {
               author="pranavnb"
               rotate={-14}
               floatDelay="0s"
-              className="bottom-[150px] xl:left-[2%]"
+              className="bottom-[140px] xl:right-[62%]"
             >
               Working with him was a game changer!
             </CommentCard>
@@ -476,7 +476,7 @@ export default function Hero() {
               author="vijaynb"
               rotate={8}
               floatDelay="1.2s"
-              className=" bottom-[45px] right-[50px]"
+              className=" bottom-[25px] right-[33px]"
             >
               We Increased our conversions by 200%
             </CommentCard>
