@@ -165,7 +165,7 @@ export default function FAQ() {
             <div className="mt-[28px] flex flex-wrap items-center gap-[10px]">
               <a
                 href="./projects"
-                className="inline-flex h-[55px] items-center justify-center rounded-full px-[26px] font-jakarta text-[15px] font-medium transition-transform duration-300 hover:scale-[1.02]"
+                className="inline-flex h-[55px] items-center justify-center rounded-full px-[26px] font-jakarta text-[15px] font-medium"
                 style={{
                   color: "#ffffff",
                   border: "1px solid rgba(255,255,255,0.06)",
@@ -177,7 +177,7 @@ export default function FAQ() {
               </a>
               <a
                 href="./contact#contact"
-                className="inline-flex h-[55px] items-center justify-center rounded-full px-[26px] font-jakarta text-[15px] font-medium transition-transform duration-300 hover:scale-[1.02]"
+                className="inline-flex h-[55px] items-center justify-center rounded-full px-[26px] font-jakarta text-[15px] font-medium"
                 style={{
                   color: "#0a0a0a",
                   background:
