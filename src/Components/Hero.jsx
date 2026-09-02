@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
 import heroVideo from "../assets/images/Hero/Hero.mp4";
-import card1 from "../assets/Images/Hero/card1.avif";
-import card2 from "../assets/Images/Hero/card2.avif";
-import card3 from "../assets/Images/Hero/card3.avif";
-import card4 from "../assets/Images/Hero/card4.avif";
+import card1 from "../assets/images/Hero/card1.avif";
+import card2 from "../assets/images/Hero/card2.avif";
+import card3 from "../assets/images/Hero/card3.avif";
+import card4 from "../assets/images/Hero/card4.avif";
 import "../index.css";
 
 const PROJECTS = [
