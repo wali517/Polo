@@ -10,26 +10,22 @@ const PROJECTS = [
   {
     id: "fade",
     href: "./projects/fade",
-    image:
-      card1,
+    image: card1,
   },
   {
     id: "brandin",
     href: "./projects/brandin",
-    image:
-      card2,
+    image: card2,
   },
   {
     id: "studio",
     href: "./projects/studio",
-    image:
-      card3,
+    image: card3,
   },
   {
     id: "atom-ai",
     href: "./projects/atom-ai",
-    image:
-      card4,
+    image: card4,
   },
 ];
 
@@ -69,39 +65,81 @@ function useFadeInLeft() {
 function ProjectCard({ project, className = "", animationDelay = 0 }) {
   const [fadeRef, fadeVisible] = useFadeInLeft();
   const [hovered, setHovered] = useState(false);
-  const [cursorPos, setCursorPos] = useState({
+  const mouseRef = useRef({
     x: 0,
     y: 0,
   });
-  const handleMouseMove = (e) => {
-    setCursorPos({
-      x: e.clientX,
-      y: e.clientY,
-    });
-  };
+  const cursorPositionRef = useRef({
+    x: 0,
+    y: 0,
+  });
+  const cursorRef = useRef(null);
+  const animationFrameRef = useRef(null);
+  useEffect(() => {
+    if (!hovered) {
+      cancelAnimationFrame(animationFrameRef.current);
+      return;
+    }
+    const animate = () => {
+      if (cursorRef.current) {
+        const targetX = mouseRef.current.x;
+        const targetY = mouseRef.current.y;
+        const currentX = cursorPositionRef.current.x;
+        const currentY = cursorPositionRef.current.y;
+        cursorPositionRef.current.x += (targetX - currentX) * 0.22;
+        cursorPositionRef.current.y += (targetY - currentY) * 0.22;
+        cursorRef.current.style.transform = `
+          translate3d(
+            ${cursorPositionRef.current.x}px,
+            ${cursorPositionRef.current.y}px,
+            0
+          )
+          translate3d(-50%, -50%, 0)
+        `;
+      }
+      animationFrameRef.current = requestAnimationFrame(animate);
+    };
+    animationFrameRef.current = requestAnimationFrame(animate);
+    return () => {
+      cancelAnimationFrame(animationFrameRef.current);
+    };
+  }, [hovered]);
   const handleMouseEnter = (e) => {
-    setCursorPos({
-      x: e.clientX,
-      y: e.clientY,
-    });
+    const x = e.clientX;
+    const y = e.clientY;
+    mouseRef.current.x = x;
+    mouseRef.current.y = y;
+    cursorPositionRef.current.x = x;
+    cursorPositionRef.current.y = y;
     setHovered(true);
+    document.body.classList.add("project-cursor-active");
   };
-
+  const handleMouseMove = (e) => {
+    mouseRef.current.x = e.clientX;
+    mouseRef.current.y = e.clientY;
+  };
+  const handleMouseLeave = () => {
+    setHovered(false);
+    document.body.classList.remove("project-cursor-active");
+    cancelAnimationFrame(animationFrameRef.current);
+  };
+  useEffect(() => {
+    return () => {
+      cancelAnimationFrame(animationFrameRef.current);
+      document.body.classList.remove("project-cursor-active");
+    };
+  }, []);
   return (
     <a
       ref={fadeRef}
       href={project.href}
       onMouseEnter={handleMouseEnter}
-      onMouseLeave={() => setHovered(false)}
+      onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
       className={`relative block w-full ${className}`}
     >
       <div
-        className={`relative h-full w-full overflow-hidden rounded-[20px] border border-white/[0.08] bg-[#111111] p-4 transition-all duration-[1100ms] ease-[cubic-bezier(0.19,1,0.22,1)] ${
-          fadeVisible
-            ? "translate-x-0 opacity-100"
-            : "-translate-x-[100px] opacity-0"
-        }`}
+        className={`relative h-full w-full overflow-hidden rounded-[20px] border border-white/[0.08] bg-[#111111] p-4 transition-all duration-[1100ms] ease-[cubic-bezier(0.19,1,0.22,1)] ${fadeVisible ? "translate-x-0 opacity-100" : "-translate-x-[100px] opacity-0"}`}
         style={{
           transitionDelay: fadeVisible ? `${animationDelay}s` : "0s",
           boxShadow:
@@ -144,16 +182,11 @@ function ProjectCard({ project, className = "", animationDelay = 0 }) {
       </div>
       {hovered && (
         <div
-          className="pointer-events-none fixed z-[9999] hidden md:block"
-          style={{
-            left: `${cursorPos.x}px`,
-            top: `${cursorPos.y}px`,
-            transform: "translate3d(-50%, -50%, 0)",
-            transition:
-              "left 120ms cubic-bezier(0.16,1,0.3,1), top 120ms cubic-bezier(0.16,1,0.3,1)",
-          }}
+          ref={cursorRef}
+          className="pointer-events-none fixed left-0 top-0 z-[999999] hidden md:block"
+          style={{ willChange: "transform" }}
         >
-          <div className="flex h-[40px] min-w-[120px] items-center justify-center rounded-full border border-white/70 bg-white/[0.08] px-4 text-[13px] font-medium text-white backdrop-blur-md">
+          <div className="flex h-[40px] min-w-[120px] items-center justify-center rounded-full border border-white/70 bg-white/[0.08] px-4 text-[13px] text-white backdrop-blur-md">
             View project
           </div>
         </div>
@@ -235,12 +268,12 @@ export default function Projects() {
           <div className="mx-auto w-full max-w-[1050px]">
             <div className="flex w-full flex-col gap-7 pb-4 pt-[100px] md:pt-24 colg:pt-24">
               <div className="w-full">
-                <div className="inline-flex h-[34px] items-center gap-2 rounded-full border border-white/10 bg-[#111111] px-3.5 font-inter text-[15px] font-medium text-white">
+                <div className="inline-flex h-[34px] items-center gap-2 rounded-full border border-white/10 bg-[#111111] px-3.5 font-inter text-[15px] text-white">
                   <BullseyeIcon />
                   <span>Recent Projects</span>
                 </div>
                 <div className="relative mt-5 flex w-full items-center gap-2 md:gap-4">
-                  <h1 className="w-max max-w-none whitespace-nowrap font-satoshi text-[56px] leading-[0.98] sm:text-[64px] md:text-[72px]">
+                  <h1 className="w-max max-w-none whitespace-nowrap font-satoshi text-[40px] leading-[0.98] sm:text-[44px] md:text-[54px]">
                     <span className="text-[#FFFFFF]">Recent</span>{" "}
                     <span className="text-[#FFFFFF99]">Designs</span>
                   </h1>

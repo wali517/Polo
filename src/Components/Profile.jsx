@@ -102,7 +102,7 @@ export default function Profile() {
             <BullseyeIcon />
             <span>Expert Designer</span>
           </div>
-          <h2 className="mt-[22px] font-satoshi text-[40px] leading-[1.5] tracking-[-0.04em] text-white lg:text-[54px]">
+          <h2 className="mt-[10px] font-satoshi font-[10] text-[40px] leading-[1.5] text-white lg:text-[54px]">
             <StaggeredHeading
               startDelay={0.15}
               step={0.22}
@@ -229,7 +229,7 @@ export default function Profile() {
             }}
           >
             <div className="w-full">
-              <p className="font-jakarta text-[15px] font-medium leading-[1.7] tracking-[0.5px] lg:tracking-[0px] md:tracking-[0.5px] text-white lg:text-[16px] lg:leading-[2]">
+              <p className="font-jakarta text-[15px] font-medium leading-[1.7] tracking-[0.5px] lg:tracking-[0px] md:tracking-[0.5px] text-white md:text-[16px] lg:leading-[2]">
                 I&rsquo;m Johan Beker, a dedicated Web Designer &amp; Developer
                 based in the vibrant city of Berlin, Germany. I specialize in
                 creative design with seamless technical execution to craft

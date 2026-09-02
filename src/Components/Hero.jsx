@@ -136,33 +136,135 @@ function useFadeInLeft() {
 function ProjectCard({ project, className = "", animationDelay = 0 }) {
   const [fadeRef, fadeVisible] = useFadeInLeft();
   const [hovered, setHovered] = useState(false);
-  const [cursorPos, setCursorPos] = useState({
+
+  // Mouse target position
+  const mouseRef = useRef({
     x: 0,
     y: 0,
   });
 
-  const handleMouseMove = (e) => {
-    setCursorPos({
-      x: e.clientX,
-      y: e.clientY,
-    });
-  };
+  // Current position of "View project"
+  const positionRef = useRef({
+    x: 0,
+    y: 0,
+  });
 
+  const cursorRef = useRef(null);
+  const animationFrameRef = useRef(null);
+
+  /*
+   * Smoothly animate the View project pill
+   */
+  useEffect(() => {
+    if (!hovered) {
+      cancelAnimationFrame(animationFrameRef.current);
+      return;
+    }
+
+    const animate = () => {
+      const cursor = cursorRef.current;
+
+      if (cursor) {
+        const targetX = mouseRef.current.x;
+        const targetY = mouseRef.current.y;
+
+        positionRef.current.x +=
+          (targetX - positionRef.current.x) * 0.25;
+
+        positionRef.current.y +=
+          (targetY - positionRef.current.y) * 0.25;
+
+        cursor.style.transform = `
+          translate3d(
+            ${positionRef.current.x}px,
+            ${positionRef.current.y}px,
+            0
+          )
+          translate3d(-50%, -50%, 0)
+        `;
+      }
+
+      animationFrameRef.current =
+        requestAnimationFrame(animate);
+    };
+
+    animationFrameRef.current =
+      requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(animationFrameRef.current);
+    };
+  }, [hovered]);
+
+  /*
+   * Enter project card
+   */
   const handleMouseEnter = (e) => {
-    setCursorPos({
-      x: e.clientX,
-      y: e.clientY,
-    });
+    mouseRef.current.x = e.clientX;
+    mouseRef.current.y = e.clientY;
+
+    // Start the View project pill directly under cursor
+    positionRef.current.x = e.clientX;
+    positionRef.current.y = e.clientY;
 
     setHovered(true);
+
+    /*
+     * Hide ONLY the global glowing cursor dot.
+     * Nothing else is hidden.
+     */
+    document.body.classList.add(
+      "project-cursor-active"
+    );
   };
+
+  /*
+   * Move inside project card
+   */
+  const handleMouseMove = (e) => {
+    mouseRef.current.x = e.clientX;
+    mouseRef.current.y = e.clientY;
+  };
+
+  /*
+   * Leave project card
+   */
+  const handleMouseLeave = () => {
+    setHovered(false);
+
+    /*
+     * Show the global glowing cursor dot again.
+     */
+    document.body.classList.remove(
+      "project-cursor-active"
+    );
+
+    cancelAnimationFrame(
+      animationFrameRef.current
+    );
+  };
+
+  /*
+   * Cleanup
+   */
+  useEffect(() => {
+    return () => {
+      cancelAnimationFrame(
+        animationFrameRef.current
+      );
+
+      document.body.classList.remove(
+        "project-cursor-active"
+      );
+    };
+  }, []);
 
   return (
     <a
       ref={fadeRef}
       href={project.href}
       onMouseEnter={handleMouseEnter}
-      onMouseLeave={() => setHovered(false)}
+      onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
       className={`relative block w-full ${className}`}
     >
@@ -173,7 +275,9 @@ function ProjectCard({ project, className = "", animationDelay = 0 }) {
             : "-translate-x-[100px] opacity-0"
         }`}
         style={{
-          transitionDelay: fadeVisible ? `${animationDelay}s` : "0s",
+          transitionDelay: fadeVisible
+            ? `${animationDelay}s`
+            : "0s",
           boxShadow:
             "rgba(0,0,0,0.4) 16px 24px 20px 8px, rgba(184,180,180,0.08) 0px 2px 0px 0px inset",
         }}
@@ -183,43 +287,80 @@ function ProjectCard({ project, className = "", animationDelay = 0 }) {
           alt=""
           className="h-full w-full object-cover object-left"
         />
+
+        {/* CARD ARROW */}
         <div className="absolute bottom-2 left-2 flex h-[50px] w-[50px] items-center justify-center overflow-hidden rounded-full border border-white/10 bg-[#0a0a0a] text-white">
           <span
             className="absolute inset-0 flex items-center justify-center transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
             style={{
-              transform: hovered ? "translateY(-100%)" : "translateY(0)",
+              transform: hovered
+                ? "translateY(-100%)"
+                : "translateY(0)",
             }}
           >
             <ArrowUpRight
               className="h-[22px] w-[22px]"
-              style={{ transform: "rotate(10.5deg)" }}
+              style={{
+                transform: "rotate(10.5deg)",
+              }}
             />
           </span>
+
           <span
             className="absolute inset-0 flex items-center justify-center transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
             style={{
-              transform: hovered ? "translateY(0)" : "translateY(100%)",
+              transform: hovered
+                ? "translateY(0)"
+                : "translateY(100%)",
             }}
           >
             <ArrowUpRight
               className="h-[22px] w-[22px]"
-              style={{ transform: "rotate(10.5deg)" }}
+              style={{
+                transform: "rotate(10.5deg)",
+              }}
             />
           </span>
         </div>
       </div>
+
+      {/* =========================================
+          CUSTOM "VIEW PROJECT" CURSOR
+          ========================================= */}
       {hovered && (
         <div
-          className="pointer-events-none fixed z-[9999] hidden md:block"
+          ref={cursorRef}
+          className="
+            pointer-events-none
+            fixed
+            left-0
+            top-0
+            z-[999999]
+            hidden
+            md:block
+          "
           style={{
-            left: `${cursorPos.x}px`,
-            top: `${cursorPos.y}px`,
-            transform: "translate3d(-50%, -50%, 0)",
-            transition:
-              "left 120ms cubic-bezier(0.16,1,0.3,1), top 120ms cubic-bezier(0.16,1,0.3,1)",
+            willChange: "transform",
           }}
         >
-          <div className="flex h-[40px] min-w-[120px] items-center justify-center rounded-full border border-white/70 bg-white/[0.08] px-4 text-[13px] font-medium text-white backdrop-blur-md">
+          <div
+            className="
+              flex
+              h-[40px]
+              min-w-[120px]
+              items-center
+              justify-center
+              rounded-full
+              border
+              border-white/70
+              bg-white/[0.08]
+              px-4
+              text-[13px]
+              font-medium
+              text-white
+              backdrop-blur-md
+            "
+          >
             View project
           </div>
         </div>
@@ -227,6 +368,7 @@ function ProjectCard({ project, className = "", animationDelay = 0 }) {
     </a>
   );
 }
+
 function MobileProjectCard({ project, className = "" }) {
   const [fadeRef, fadeVisible] = useFadeInLeft();
   return (

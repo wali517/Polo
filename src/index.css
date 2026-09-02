@@ -1,37 +1,13 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
-
 @import "tailwindcss";
-@font-face {
-  font-family: "Satoshi";
-  src: url("./assets/fonts/Satoshi-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Satoshi";
-  src: url("./assets/fonts/Satoshi-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Satoshi";
-  src: url("./assets/fonts/Satoshi-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
 @theme {
   /* ---- Color system ---- */
   --color-base: #0a0a0a;
   --color-primary: #FFFFFF;
   --color-secondary: #FFFFFF99;
   /* ---- Font ---- */
-  --font-satoshi: "Satoshi", "Satoshi Placeholder", system-ui, sans-serif;
+  --font-satoshi: "Satoshi", "Satoshi Placeholder", sans-serif;
   --font-inter: "Inter", system-ui, sans-serif;
   --font-jakarta: "Plus Jakarta Sans", system-ui, sans-serif;
   /* ---- Custom Breakpoints ---- */
@@ -491,3 +467,26 @@ animation-play-state: paused;
  }
 }
 
+.cursor-glow-dot {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  pointer-events: none;
+  z-index: 999998;
+  box-shadow:
+    0 0 8px rgba(255, 255, 255, 1),
+    0 0 18px rgba(255, 255, 255, 0.9),
+    0 0 35px rgba(255, 255, 255, 0.65),
+    0 0 60px rgba(255, 255, 255, 0.35);
+  opacity: 1;
+  transition: opacity 180ms ease;
+  will-change: transform;
+}
+
+body.project-cursor-active .cursor-glow-dot {
+  opacity: 0;
+}
