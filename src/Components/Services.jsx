@@ -420,7 +420,7 @@ export default function Services() {
             </div>
             <a
               href="#contact"
-              className="flex h-[58px] w-[154px] shrink-0 items-center justify-center self-start rounded-full px-[26px] py-[13px] font-jakarta text-[16px] font-medium leading-none text-[#0A0A0A] min-[1400px]:mb-0 min-[1400px]:self-auto"
+              className="flex h-[58px] w-[154px] shrink-0 items-center justify-center self-start rounded-full px-[26px] py-[13px] font-jakarta text-[16px] font-medium leading-none text-[#0A0A0A] min-[1400px]:mb-0 min-[1400px]:self-auto btn-hover"
               style={{
                 background: "linear-gradient(180deg, #FFFFFF 0%, #787878 140%)",
               }}

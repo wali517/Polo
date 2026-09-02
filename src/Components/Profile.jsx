@@ -210,7 +210,7 @@ export default function Profile() {
               >
                 <a
                   href="#contact"
-                  className="flex h-[56px] w-[175px] items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[15px] font-medium leading-none text-white lg:h-[58px] lg:w-[182px] lg:text-[16px]"
+                  className="flex h-[56px] w-[175px] items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[15px] font-medium leading-none text-white lg:h-[58px] lg:w-[182px] lg:text-[16px] btn-hover"
                   style={{
                     background:
                       "linear-gradient(180deg, rgba(120,120,120) -382%, #080808 100%)",

@@ -297,7 +297,7 @@ export default function Process() {
         <div className="flex items-center gap-[16px] max-sm:w-full max-sm:flex-col max-sm:gap-[20px] sm:mb-4">
           <a
             href="#projects"
-            className="flex h-[58px] w-[175px] items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[16px] font-bold leading-none text-white md:mt-5 sm:mt-[84px] max-sm:h-[58px] max-sm:w-[310px]"
+            className="flex h-[58px] w-[175px] items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[16px] font-bold leading-none text-white md:mt-5 sm:mt-[84px] max-sm:h-[58px] max-sm:w-[310px] btn-hover"
             style={{
               background:
                 "linear-gradient(180deg, rgba(120,120,120) -382%, #0A0A0A 100%)",
@@ -307,7 +307,7 @@ export default function Process() {
           </a>
           <a
             href="#contact"
-            className="flex h-[58px] w-[154px] items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[16px] font-medium leading-none text-[#0A0A0A] md:mt-5 sm:mt-[84px] max-sm:h-[58px] max-sm:w-[310px]"
+            className="flex h-[58px] w-[154px] items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[16px] font-medium leading-none text-[#0A0A0A] md:mt-5 sm:mt-[84px] max-sm:h-[58px] max-sm:w-[310px] btn-hover"
             style={{
               background: "linear-gradient(180deg, #FFFFFF 0%, #787878 140%)",
             }}

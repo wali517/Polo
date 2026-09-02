@@ -343,7 +343,7 @@ export default function Projects() {
                 <div className="mt-7 flex w-full flex-col gap-3 sm:mt-8 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center min-[1400px]:absolute min-[1400px]:left-1/2 min-[1400px]:bottom-4 min-[1400px]:-translate-x-[-180px]">
                   <a
                     href="./projects"
-                    className="inline-flex h-[62px] w-[290px] items-center justify-center rounded-full border border-white/[0.06] px-[26px] py-[13px] font-jakarta text-[15px] text-[#FFFFFF] sm:h-[60px] sm:w-auto sm:text-[16px]"
+                    className="inline-flex h-[62px] w-[290px] items-center justify-center rounded-full border border-white/[0.06] px-[26px] py-[13px] font-jakarta text-[15px] text-[#FFFFFF] sm:h-[60px] sm:w-auto sm:text-[16px] btn-hover"
                     style={{
                       background:
                         "linear-gradient(180deg, #222222 0%, #0a0a0a 100%)",
@@ -353,7 +353,7 @@ export default function Projects() {
                   </a>
                   <a
                     href="./contact#contact"
-                    className="inline-flex h-[62px] w-[290px] items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[15px] font-medium text-[#080808] sm:h-[60px] sm:w-auto sm:text-[16px]"
+                    className="inline-flex h-[62px] w-[290px] items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[15px] font-medium text-[#080808] sm:h-[60px] sm:w-auto sm:text-[16px] btn-hover"
                     style={{
                       background:
                         "linear-gradient(180deg, #ffffff 0%, #c8c8c8 140%)",

@@ -140,7 +140,7 @@ export default function CTA() {
             <div className="mt-[28px] flex flex-wrap items-center gap-[10px]">
               <a
                 href="./projects#projects"
-                className="inline-flex sm:w-[180px] sm:h-[55px] w-[280px] h-[55px] items-center justify-center rounded-full px-[26px] font-jakarta text-[15px] text-white"
+                className="inline-flex sm:w-[180px] sm:h-[55px] w-[280px] h-[55px] items-center justify-center rounded-full px-[26px] font-jakarta text-[15px] text-white btn-hover"
                 style={{
                   background:
                     "linear-gradient(180deg, #787878 -382%, #0a0a0a 100%)",
@@ -150,7 +150,7 @@ export default function CTA() {
               </a>
               <a
                 href="./contact#contact"
-                className="inline-flex sm:w-[180px] sm:h-[55px] w-[280px] h-[55px] items-center justify-center gap-[7px] rounded-full px-[26px] font-jakarta text-[15px] font-semibold text-[#0a0a0a]"
+                className="inline-flex sm:w-[180px] sm:h-[55px] w-[280px] h-[55px] items-center justify-center gap-[7px] rounded-full px-[26px] font-jakarta text-[15px] font-semibold text-[#0a0a0a] btn-hover"
                 style={{
                   background:
                     "linear-gradient(180deg, #ffffff 0%, #787878 140%)",
