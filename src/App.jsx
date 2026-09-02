@@ -16,7 +16,7 @@ export default function App() {
     <>
       <Navbar />
       <CursorGlow />
-    <div>
+      <div>
         <Hero />
         <Profile />
         <Process />
@@ -26,8 +26,8 @@ export default function App() {
         <Testimonials />
         <FAQ />
         <CTA />
-    </div>
+      </div>
       <Footer />
-      </>
+    </>
   );
 }
