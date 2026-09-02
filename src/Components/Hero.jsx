@@ -340,7 +340,7 @@ export default function Hero() {
                   Beker
                 </span>
               </h1>
-              <div className="relative flex h-[50px] w-[50px] shrink-0">
+              <div className="relative hidden h-[50px] w-[50px] shrink-0 sm:flex">
                 <a
                   href="./#profile"
                   onMouseEnter={() => setHeadingArrowHover(true)}

@@ -453,7 +453,7 @@ export default function Services() {
                 icon="graphic"
                 className="h-[175px] sm:h-[158px] w-full"
               />
-              <div className="group relative flex h-[440px] w-full flex-col overflow-hidden rounded-[20px] border border-white/[0.06] bg-[#111111] p-[30px] shadow-[16px_24px_20px_8px_rgba(0,0,0,0.4)]">
+              <div className="group relative flex h-[420px] w-full flex-col overflow-hidden rounded-[20px] border border-white/[0.06] bg-[#111111] p-[30px] shadow-[16px_24px_20px_8px_rgba(0,0,0,0.4)]">
                 <div className="relative z-10">
                   <div className="flex items-center gap-3">
                     <ServiceIcon icon="framer" />
