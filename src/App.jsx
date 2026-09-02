@@ -10,6 +10,7 @@ import FAQ from "./Components/FAQ";
 import CTA from "./Components/CTA";
 import Footer from "./Components/Footer";
 import CursorGlow from "./Components/CursorGlow";
+
 export default function App() {
   return (
     <>

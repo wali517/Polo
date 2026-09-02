@@ -98,7 +98,7 @@ export default function Profile() {
     >
       <div className="mx-auto flex w-full max-w-[1100px] flex-col items-center px-5 sm:px-8">
         <div className="flex w-full flex-col items-center text-center">
-          <div className="inline-flex h-[38px] items-center gap-2 rounded-full border-t border-white/10 bg-[#0F0F0F] px-4 py-[6px] font-inter text-[15px] font-medium text-white">
+          <div className="inline-flex h-[38px] items-center gap-2 rounded-full border-t border-white/10 bg-[#0F0F0F] px-4 py-[6px] font-inter text-[15px] text-white">
             <BullseyeIcon />
             <span>Expert Designer</span>
           </div>
@@ -210,7 +210,7 @@ export default function Profile() {
               >
                 <a
                   href="#contact"
-                  className="flex h-[56px] w-[175px] items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[15px] font-medium leading-none text-white lg:h-[58px] lg:w-[182px] lg:text-[16px]"
+                  className="flex h-[56px] w-[175px] items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[15px] leading-none text-white lg:h-[58px] lg:w-[182px] lg:text-[16px]"
                   style={{
                     background:
                       "linear-gradient(180deg, rgba(120,120,120) -382%, #080808 100%)",

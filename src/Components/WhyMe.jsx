@@ -213,7 +213,7 @@ export default function Benefits() {
             className="sticky top-0 flex w-full flex-col items-center pb-[35px] pt-[70px] text-center md:pt-[105px] lg:pt-[110px]"
             style={{ zIndex: 10 }}
           >
-            <div className="inline-flex h-[38px] items-center gap-2 rounded-full border-t border-white/10 bg-[#0F0F0F] px-4 py-[6px] font-inter text-[15px] font-medium text-white">
+            <div className="inline-flex h-[38px] items-center gap-2 rounded-full border-t border-white/10 bg-[#0F0F0F] px-4 py-[6px] font-inter text-[15px] text-white">
               <BullseyeIcon />
               <span>Why choose me</span>
             </div>
@@ -253,7 +253,7 @@ export default function Benefits() {
       >
         <div className="mx-auto flex w-full max-w-[1100px] flex-col items-center px-5 py-[70px]">
           <div className="flex w-full flex-col items-center text-center">
-            <div className="inline-flex h-[38px] items-center gap-2 rounded-full border-t border-white/10 bg-[#0F0F0F] px-4 py-[6px] font-inter text-[15px] font-medium text-white">
+            <div className="inline-flex h-[38px] items-center gap-2 rounded-full border-t border-white/10 bg-[#0F0F0F] px-4 py-[6px] font-inter text-[15px] text-white">
               <BullseyeIcon />
               <span>Why choose me</span>
             </div>
