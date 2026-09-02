@@ -78,9 +78,16 @@ export default function FAQ() {
       className="border rounded-[50px] bg-[#0a0a0a] py-[20px] sm:py-[30px]"
     >
       <div className="mx-auto w-full max-w-[1120px] px-[24px] py-[80px] sm:px-8 lg:py-[90px]">
-        <div className="flex flex-col gap-[50px] min-[1400px]:grid min-[1400px]:grid-cols-[1fr_1.1fr] min-[1400px]:items-start min-[1400px]:gap-[44px]">
+        <div className="flex flex-col gap-[50px] min-[1400px]:grid min-[1400px]:grid-cols-[0.85fr_1.15fr] min-[1400px]:items-start min-[1400px]:gap-[44px]">
           <div className="min-w-0 min-[1400px]:sticky min-[1400px]:top-[105px] min-[1400px]:self-start sm:w-[720px] lg:w-full lg:max-w-[720px]">
-            <div className="inline-flex h-[40px] items-center gap-[9px] rounded-[20px] px-[14px]" style={{background: "#111111", boxShadow: "rgba(0,0,0,0.4) 16px 24px 20px 8px, rgba(184,180,180,0.08) 0px 2px 0px 0px inset",}}>
+            <div
+              className="inline-flex h-[40px] items-center gap-[9px] rounded-[20px] px-[14px]"
+              style={{
+                background: "#111111",
+                boxShadow:
+                  "rgba(0,0,0,0.4) 16px 24px 20px 8px, rgba(184,180,180,0.08) 0px 2px 0px 0px inset",
+              }}
+            >
               <BullseyeIcon />
               <span
                 className="font-inter text-[15px] font-medium leading-none"
@@ -182,13 +189,13 @@ export default function FAQ() {
               </a>
             </div>
           </div>
-          <div className="flex flex-col gap-[10px] sm:w-[720px] lg:w-full lg:max-w-[720px]">
+          <div className="flex flex-col gap-[14px] sm:w-[720px] lg:w-full lg:max-w-[720px]">
             {faqs.map((item, i) => {
               const isOpen = openIndex === i;
               return (
                 <div
                   key={item.q}
-                  className="overflow-hidden rounded-[15px] bg-[#111111]"
+                  className={`overflow-hidden rounded-[15px] bg-[#111111] transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpen ? "scale-99" : "scale-[0.98]"}`}
                   style={{
                     boxShadow:
                       "rgba(0,0,0,0.4) 16px 24px 20px 8px, rgba(184,180,180,0.08) 0px 2px 0px 0px inset",
@@ -197,7 +204,7 @@ export default function FAQ() {
                   <button
                     type="button"
                     onClick={() => setOpenIndex(isOpen ? -1 : i)}
-                    className="flex w-full items-center justify-between gap-[20px] px-[20px] py-[19px] text-left sm:px-[24px] sm:py-[21px]"
+                    className="flex w-full cursor-pointer items-center justify-between gap-[20px] px-[20px] py-[19px] text-left sm:px-[24px] sm:py-[24px]"
                     aria-expanded={isOpen}
                   >
                     <span className="text-[15px] font-medium leading-[1.5] text-white sm:text-[15px]">
