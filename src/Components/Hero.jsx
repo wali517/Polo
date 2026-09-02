@@ -449,7 +449,7 @@ export default function Hero() {
               </a>
               <a
                 href="./contact#contact"
-                className=" inline-flex h-[52px] w-full items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[15px] text-[#080808] sm:h-[50px] sm:w-auto sm:text-[16px]"
+                className=" inline-flex h-[52px] w-full items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[15px] text-[#080808] sm:h-[50px] sm:w-auto sm:text-[16px] font-semibold"
                 style={{
                   background:
                     "linear-gradient(180deg, #ffffff 0%, #c8c8c8 140%)",

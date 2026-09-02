@@ -353,7 +353,7 @@ export default function Projects() {
                   </a>
                   <a
                     href="./contact#contact"
-                    className="inline-flex h-[62px] w-[290px] items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[15px] text-[#080808] sm:h-[60px] sm:w-auto sm:text-[16px]"
+                    className="inline-flex h-[62px] w-[290px] items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[15px] font-medium text-[#080808] sm:h-[60px] sm:w-auto sm:text-[16px]"
                     style={{
                       background:
                         "linear-gradient(180deg, #ffffff 0%, #c8c8c8 140%)",

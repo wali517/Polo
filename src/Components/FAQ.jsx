@@ -171,7 +171,7 @@ export default function FAQ() {
               </a>
               <a
                 href="./contact#contact"
-                className="inline-flex h-[55px] items-center justify-center rounded-full px-[26px] font-jakarta text-[15px] font-medium"
+                className="inline-flex h-[55px] items-center justify-center rounded-full px-[26px] font-jakarta text-[15px] font-semibold"
                 style={{
                   color: "#0a0a0a",
                   background:

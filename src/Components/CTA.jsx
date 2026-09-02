@@ -150,7 +150,7 @@ export default function CTA() {
               </a>
               <a
                 href="./contact#contact"
-                className="inline-flex sm:w-[180px] sm:h-[55px] w-[280px] h-[55px] items-center justify-center gap-[7px] rounded-full px-[26px] font-jakarta text-[15px] font-medium text-[#0a0a0a]"
+                className="inline-flex sm:w-[180px] sm:h-[55px] w-[280px] h-[55px] items-center justify-center gap-[7px] rounded-full px-[26px] font-jakarta text-[15px] font-semibold text-[#0a0a0a]"
                 style={{
                   background:
                     "linear-gradient(180deg, #ffffff 0%, #787878 140%)",
