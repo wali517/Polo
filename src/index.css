@@ -495,5 +495,5 @@ body.project-cursor-active .cursor-glow-dot {
 }
 
 .btn-hover:hover {
-  box-shadow: inset 0 0 0 100px rgba(0, 0, 0, 0.12);
+  box-shadow: inset 0 0 0 100px rgba(0, 0, 0, 0.18);
 }
