@@ -195,11 +195,7 @@ export default function FAQ() {
               return (
                 <div
                   key={item.q}
-                  className={`overflow-hidden rounded-[15px] bg-[#111111] transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpen ? "scale-99" : "scale-[0.98]"}`}
-                  style={{
-                    boxShadow:
-                      "rgba(0,0,0,0.4) 16px 24px 20px 8px, rgba(184,180,180,0.08) 0px 2px 0px 0px inset",
-                  }}
+                  className="overflow-hidden rounded-[15px] bg-[#111111] transform-gpu origin-center transition-transform duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-[0.96]"
                 >
                   <button
                     type="button"
@@ -217,13 +213,9 @@ export default function FAQ() {
                     />
                   </button>
                   <div
-                    className={`grid transition-all duration-300 ease-in-out ${
-                      isOpen
-                        ? "grid-rows-[1fr] opacity-100"
-                        : "grid-rows-[0fr] opacity-0"
-                    }`}
+                    className={`grid transition-[grid-template-rows,opacity] duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
                   >
-                    <div className="overflow-hidden">
+                    <div className="min-h-0 overflow-hidden">
                       <p className="px-[20px] pb-[20px] text-[16px] leading-[1.65] text-[#FFFFFF99] sm:px-[24px] sm:pb-[22px] sm:text-[16px]">
                         {item.a}
                       </p>
