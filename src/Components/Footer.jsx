@@ -9,7 +9,7 @@ import { footerLinks } from "../data/content";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#0a0a0a] border-t rounded-[50px]">
+    <footer className="w-full bg-[#0a0a0a] border-t rounded-[50px] sticky bottom-0 z-[-10]">
       <div className="mx-auto w-full max-w-[1150px] px-[39px] py-[70px] sm:px-[58px] sm:py-[60px] lg:px-[36px] lg:py-[120px]">
         <div className="flex flex-col gap-[35px] sm:flex-row sm:items-start sm:justify-between">
           <div className="flex flex-col items-start gap-[28px]">

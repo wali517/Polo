@@ -16,7 +16,7 @@ export default function App() {
     <>
       <Navbar />
       <CursorGlow />
-      <div>
+      <div className="bg-[#0a0a0a]">
         <Hero />
         <Profile />
         <Process />

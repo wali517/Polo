@@ -83,14 +83,18 @@ function CommentCard({
   rotate,
   className = "",
   floatDelay = "0s",
+  arrow,
 }) {
   return (
     <div
       className={`md:mt-24 absolute ${className}`}
-      style={{ "--card-rotate": `${rotate}deg`, "--float-delay": floatDelay }}
+      style={{
+        "--card-rotate": `${rotate}deg`,
+        "--float-delay": floatDelay,
+      }}
     >
       <div
-        className="polo-card-float relative w-[220px] overflow-hidden rounded-xl border border-white/10 bg-[#111111] xl:p-6"
+        className="polo-card-float relative w-[220px] overflow-visible rounded-xl border border-white/10 bg-[#111111] xl:p-6"
         style={{
           boxShadow:
             "16px 24px 20px 8px rgba(0,0,0,0.4), 0 2px 0 0 rgba(184,180,180,0.08) inset",
@@ -99,9 +103,12 @@ function CommentCard({
         <p className="font-inter text-[15px] font-normal leading-[2] text-[#FFFFFF]">
           "{children}"
         </p>
+
         <p className="mt-3 font-inter text-right text-[15px] text-white/50">
           -{author}
         </p>
+
+        {arrow}
       </div>
     </div>
   );
@@ -463,15 +470,12 @@ export default function Hero() {
             <CommentCard
               author="pranavnb"
               rotate={-14}
-              floatDelay="0s"
+              floatDelay="1.2s"
               className="bottom-[140px] xl:right-[62%]"
             >
               Working with him was a game changer!
             </CommentCard>
-            <div
-              className="absolute z-[40] left-[40%] top-[45%] h-7 w-7 text-white/70"
-              style={{ animation: "cardCursorPulse 5s ease-in-out infinite" }}
-            >
+            <div className="polo-arrow-1 absolute z-[40] left-[40%] top-[45%] h-7 w-7 text-white/70">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 256 256"
@@ -489,10 +493,7 @@ export default function Hero() {
               </svg>
             </div>
 
-            <div
-              className="absolute z-[40] left-[50%] top-[38%] h-7 w-7 text-white/70"
-              style={{ animation: "cardCursorPulse 5s ease-in-out infinite" }}
-            >
+            <div className="polo-arrow-2 absolute z-[40] left-[50%] top-[38%] h-7 w-7 text-white/70">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 256 256"
