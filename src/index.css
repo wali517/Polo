@@ -144,9 +144,6 @@ body::after {
     transform: translate3d(0, 0, 0);
   }
 }
-/* =========================================
-   CARD ANIMATION — KEEP YOUR CURRENT CARD
-   ========================================= */
 
 @keyframes cardPulse {
   0%,
@@ -194,11 +191,6 @@ body::after {
 
   will-change: transform;
 }
-
-
-/* =========================================
-   CURSOR / ARROW ANIMATION
-   ========================================= */
 
 @keyframes cardCursorPulse {
   0%,
