@@ -64,7 +64,7 @@ export default function CTA() {
   return (
     <section
       id="contact"
-      className="relative rounded-[50px] border w-full border-white/10 px-[10px] py-[80px] sm:px-4 sm:py-[100px]"
+      className="relative z-5 rounded-[50px] border w-full border-white/10 px-[10px] py-[80px] sm:px-4 sm:py-[100px]"
     >
       <div className="mx-auto w-full max-w-[1150px]">
         <div className="relative grid gap-[45px] p-[22px] sm:gap-[50px] sm:p-[32px] lg:grid-cols-[0.90fr_1.10fr] lg:items-center lg:gap-[50px] lg:py-[20px]">

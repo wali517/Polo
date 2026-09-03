@@ -446,7 +446,7 @@ export default function Hero() {
             <div className="mt-7 flex w-full flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:w-auto">
               <a
                 href="./projects"
-                className="inline-flex h-[52px] w-full items-center justify-center rounded-full border border-white/[0.06] px-[26px] py-[13px] font-jakarta text-[15px] text-[#FFFFFF] sm:h-[50px] sm:w-auto sm:text-[16px] btn-hover"
+                className="inline-flex h-[58px] w-[270px] items-center justify-center rounded-full border-t border-white/[0.06] px-[26px] py-[13px] font-jakarta text-[15px] text-[#FFFFFF] sm:h-[50px] sm:w-auto sm:text-[16px] btn-hover"
                 style={{
                   background:
                     "linear-gradient(180deg, #222222 0%, #0a0a0a 100%)",
@@ -456,7 +456,7 @@ export default function Hero() {
               </a>
               <a
                 href="./contact#contact"
-                className=" inline-flex h-[52px] w-full items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[15px] text-[#080808] sm:h-[50px] sm:w-auto sm:text-[16px] font-semibold btn-hover"
+                className=" inline-flex h-[58px] w-[270px] items-center justify-center rounded-full px-[26px] py-[13px] font-jakarta text-[15px] text-[#080808] sm:h-[50px] sm:w-auto sm:text-[16px] font-semibold btn-hover"
                 style={{
                   background:
                     "linear-gradient(180deg, #ffffff 0%, #c8c8c8 140%)",

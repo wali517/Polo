@@ -45,11 +45,13 @@ export default function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="relative -z-[20] -mt-6 w-full overflow-hidden rounded-t-[50px] border-t border-[#ffffff15] bg-[#0a0a0a]"
+      className="relative z-[-10] -mt-20 w-full overflow-hidden rounded-t-[50px] border-t border-[#ffffff15] bg-[#0a0a0a]"
     >
       <div
         ref={contentRef}
-        className="mx-auto w-full max-w-[1150px] px-[39px] py-[70px] sm:px-[58px] sm:py-[60px] lg:px-[36px] lg:py-[100px]">
+        className="mx-auto w-full max-w-[1150px] px-[39px] py-[70px] sm:px-[58px] sm:py-[60px] lg:px-[36px] lg:py-[100px]"
+        style={{ opacity: 1 }}
+      >
         <div className="flex flex-col gap-[35px] sm:flex-row sm:items-start sm:justify-between">
           <div className="flex flex-col items-start gap-[28px]">
             <a
