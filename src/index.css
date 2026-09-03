@@ -469,9 +469,6 @@ animation-play-state: paused;
   background: #ffffff;
   pointer-events: none;
   z-index: 99999;
-  box-shadow:
-    0 0 8px rgba(255, 255, 255, 1),
-    0 0 18px rgba(255, 255, 255, 0.9);
   opacity: 1;
   transition: opacity 180ms ease;
   will-change: transform;
