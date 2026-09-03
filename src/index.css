@@ -98,7 +98,7 @@ body {
     );
   }
 
-body:after {
+body::after {
   content: "";
   position: fixed;
   left: 0;
