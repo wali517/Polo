@@ -372,7 +372,7 @@ export default function Hero() {
                   "heroWordReveal 1.3s cubic-bezier(0.19,1,0.22,1) 0.25s both",
               }}
             >
-              <h1 className="w-max max-w-none whitespace-nowrap font-satoshi text-[72px] leading-[0.98]">
+              <h1 className="w-max max-w-none whitespace-normal font-satoshi text-[72px] leading-[0.98]">
                 <span className="text-[#FFFFFF]">Johan</span>{" "}
                 <span
                   className="text-[#FFFFFF99]"
